@@ -646,7 +646,10 @@ window.BP_CAT_DATA = {
     fetch('assets/data/news.json')
       .then(r => r.json())
       .then(d => {
-        const items = (d.items || []).slice(0, 4);
+        // IR 공시는 메인 뉴스에서 제외(뉴스룸 태그 필터로만 열람) — IA-13
+        const items = (d.items || [])
+          .filter(it => !(it.tag && Object.values(it.tag).includes('IR')))
+          .slice(0, 4);
         wrap.innerHTML = items.map(it => `
           <a class="news-card" href="news/detail.html?id=${it.id}">
             <div class="news-meta">

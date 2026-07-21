@@ -118,6 +118,14 @@
           </select>
         </div>
         <div class="form-row full">
+          <label><span class="ko-only">고객 구분</span><span class="en-only">Customer Type</span><span class="es-only">Tipo de cliente</span><span class="req">*</span></label>
+          <select name="segment" required>
+            <option value="" data-ko="선택해 주세요" data-en="Select one" data-es="Seleccione una opción">선택해 주세요</option>
+            <option value="b2b" data-ko="기업·기관 (병원·유통사·OEM)" data-en="Business (Hospital / Distributor / OEM)" data-es="Empresa (Hospital / Distribuidor / OEM)">기업·기관 (병원·유통사·OEM)</option>
+            <option value="b2c" data-ko="개인" data-en="Individual" data-es="Particular">개인</option>
+          </select>
+        </div>
+        <div class="form-row full">
           <label><span class="ko-only">관심 제품</span><span class="en-only">Product of Interest</span><span class="es-only">Producto de interés</span></label>
           <select name="product" data-i18n-first-option>
             <option value="" data-ko="선택 (선택 사항)" data-en="Select (optional)" data-es="Seleccione (opcional)">선택 (선택 사항)</option>
@@ -201,7 +209,7 @@
     const fd = new FormData(form);
     const data = Object.fromEntries(fd);
     // simple validation
-    if (!data.name || !data.email || !data.subject || !data.message || !data.type || !data.consent) {
+    if (!data.name || !data.email || !data.subject || !data.message || !data.type || !data.segment || !data.consent) {
       msg.className = 'form-msg err';
       msg.textContent = ({ko:'필수 항목을 모두 입력해 주세요.', en:'Please fill in all required fields.', es:'Por favor, complete todos los campos obligatorios.'})[lang] || '필수 항목을 모두 입력해 주세요.';
       return;
