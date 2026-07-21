@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>검색 | 바이오프로테크</title>
+<link rel="stylesheet" href="Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="assets/css/site.css" />
+<style>
+  .search-box { display: flex; gap: 8px; margin-bottom: 32px; }
+  .search-box input { flex: 1; padding: 16px 20px; font-size: 15px; border: 1px solid var(--bp-lt2); background: #fff; }
+  .search-box input:focus { border-color: var(--bp-accent5); outline: 0; }
+  .search-group { margin-bottom: 48px; }
+  .search-group h3 { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bp-accent5); font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--bp-lt2); }
+  .result-item { display: block; padding: 16px 0; border-bottom: 1px solid var(--bp-lt2); transition: padding .2s; }
+  .result-item:hover { padding-left: 8px; background: #F7F8FA; }
+  .result-item h4 { font-size: 15px; font-weight: 700; color: var(--bp-dk2); margin-bottom: 4px; }
+  .result-item h4 mark { background: #FFF5B8; color: var(--bp-accent5); padding: 0 2px; }
+  .result-item p { font-size: 13px; color: var(--bp-dk2); opacity: 0.75; }
+  .result-item .kind { font-size: 10px; letter-spacing: 0.22em; font-weight: 700; color: var(--bp-accent5); text-transform: uppercase; margin-right: 8px; }
+  .empty-state { padding: 48px 24px; text-align: center; color: var(--bp-dk2); opacity: 0.6; }
+</style>
+<link rel="stylesheet" href="assets/css/theme-apple.css" />
+</head>
+<body data-base="." data-nav="">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Search</span></nav>
+  <h1 class="ko-only">검색<span class="en">Search</span></h1>
+  <h1 class="en-only">Search<span class="en">Site-wide</span></h1>
+  <h1 class="es-only">Buscar<span class="en">En todo el sitio</span></h1>
+  <p class="lead ko-only">제품, 뉴스, FAQ 전체를 한 번에 검색합니다.</p>
+  <p class="lead en-only">Search across products, news, and FAQ at once.</p>
+  <p class="lead es-only">Busca en productos, noticias y FAQ a la vez.</p>
+</section>
+
+<main class="page-body">
+  <div class="search-box">
+    <input type="search" id="q" placeholder="" autofocus />
+  </div>
+  <div id="results"><div class="empty-state"></div></div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="assets/js/chrome.js"></script>
+<script>
+(async function () {
+  const [products, news, faq] = await Promise.all([
+    fetch('assets/data/products.json').then(r => r.json()),
+    fetch('assets/data/news.json').then(r => r.json()),
+    fetch('assets/data/faq.json').then(r => r.json()),
+  ]);
+  const lang = window.bpLang();
+  const _Lko = { ph: '검색어를 입력하세요 (예: ECG, TENS, 문의, 인증)', hint: '검색어를 입력해 주세요.', none: q => `"${q}"에 대한 결과가 없습니다.`, prod: '제품', news: '뉴스', faq: 'FAQ' };
+  const L = ({
+    en: { ph: 'Type to search (e.g. ECG, TENS, inquiry, certification)', hint: 'Please enter a search term.', none: q => `No results for "${q}".`, prod: 'Products', news: 'News', faq: 'FAQ' },
+    es: { ph: 'Escriba para buscar (p. ej. ECG, TENS, consulta, certificación)', hint: 'Introduzca un término de búsqueda.', none: q => `No se han encontrado resultados para "${q}".`, prod: 'Productos', news: 'Noticias', faq: 'FAQ' },
+    ko: _Lko
+  })[lang] || _Lko;
+
+  const input = document.getElementById('q');
+  const root = document.getElementById('results');
+  input.placeholder = L.ph;
+  root.querySelector('.empty-state').textContent = L.hint;
+
+  // Seed from ?q=
+  const seed = window.bpQuery('q');
+  if (seed) { input.value = seed; }
+
+  function highlight(text, q) {
+    if (!q) return text;
+    const esc = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return text.replace(new RegExp(`(${esc})`, 'gi'), '<mark>$1</mark>');
+  }
+
+  function render() {
+    const q = input.value.trim();
+    if (!q) { root.innerHTML = `<div class="empty-state">${L.hint}</div>`; return; }
+    const ql = q.toLowerCase();
+
+    const prodHits = products.products.filter(p =>
+      p.name[lang].toLowerCase().includes(ql) || p.tagline[lang].toLowerCase().includes(ql)
+    );
+    const newsHits = news.items.filter(i =>
+      i.title[lang].toLowerCase().includes(ql) || i.summary[lang].toLowerCase().includes(ql)
+    );
+    const faqHits = faq.items.filter(i =>
+      i.q[lang].toLowerCase().includes(ql) || i.a[lang].toLowerCase().includes(ql)
+    );
+
+    const total = prodHits.length + newsHits.length + faqHits.length;
+    if (!total) { root.innerHTML = `<div class="empty-state">${L.none(q)}</div>`; return; }
+
+    const unit = ({ko:'건', en:'', es:' resultados'}[lang] || '건');
+    let html = '';
+    if (prodHits.length) {
+      html += `<section class="search-group"><h3>${L.prod} · ${prodHits.length}${unit}</h3>` +
+        prodHits.map(p => `
+          <a class="result-item" href="products/detail.html?id=${p.id}">
+            <h4><span class="kind">Product</span>${highlight(p.name[lang], q)}</h4>
+            <p>${highlight(p.tagline[lang], q)}</p>
+          </a>
+        `).join('') + `</section>`;
+    }
+    if (newsHits.length) {
+      html += `<section class="search-group"><h3>${L.news} · ${newsHits.length}${unit}</h3>` +
+        newsHits.map(i => `
+          <a class="result-item" href="news/detail.html?id=${i.id}">
+            <h4><span class="kind">${i.tag[lang]}</span>${highlight(i.title[lang], q)}</h4>
+            <p>${i.date} · ${highlight(i.summary[lang], q)}</p>
+          </a>
+        `).join('') + `</section>`;
+    }
+    if (faqHits.length) {
+      html += `<section class="search-group"><h3>${L.faq} · ${faqHits.length}${unit}</h3>` +
+        faqHits.map(i => `
+          <a class="result-item" href="support/faq.html">
+            <h4><span class="kind">FAQ</span>${highlight(i.q[lang], q)}</h4>
+            <p>${highlight(i.a[lang].slice(0, 120), q)}…</p>
+          </a>
+        `).join('') + `</section>`;
+    }
+    root.innerHTML = html;
+  }
+
+  let timer;
+  input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(render, 150); });
+  if (seed) render();
+})();
+</script>
+</body>
+</html>

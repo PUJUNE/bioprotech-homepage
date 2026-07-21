@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>회사소개 | 바이오프로테크</title>
+<meta name="description" content="㈜바이오프로테크 — 2000년 설립, 강원도 원주 본사의 의료용 바이오센서 제조 전문기업." />
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .ceo-block {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 48px;
+    margin-bottom: 64px;
+    align-items: start;
+  }
+  .ceo-block .placeholder-img { min-height: 360px; }
+  .ceo-block h2 {
+    font-size: 28px; font-weight: 700; color: var(--bp-accent5);
+    line-height: 1.35; margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .ceo-block p { font-size: 15px; line-height: 1.9; color: var(--bp-dk2); opacity: 0.88; margin-bottom: 14px; }
+  .ceo-block .sign { margin-top: 24px; font-size: 13px; letter-spacing: 0.15em; color: var(--bp-accent5); font-weight: 700; text-transform: uppercase; }
+
+  .info-table { margin-top: 48px; }
+  .info-table table { width: 100%; border-top: 1px solid var(--bp-lt2); }
+  .info-table tr { border-bottom: 1px solid var(--bp-lt2); }
+  .info-table th, .info-table td { padding: 16px 20px; text-align: left; font-size: 14px; vertical-align: top; }
+  .info-table th { width: 28%; background: #F7F8FA; font-weight: 700; color: var(--bp-dk2); letter-spacing: 0.05em; }
+  .info-table td { color: var(--bp-dk2); opacity: 0.9; }
+
+  .nav-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--bp-lt2);
+    border: 1px solid var(--bp-lt2);
+    margin-top: 64px;
+  }
+  .nav-tile {
+    background: #fff;
+    padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 12px;
+    min-height: 180px;
+    transition: background .2s;
+  }
+  .nav-tile:hover { background: var(--bp-lt-bluegray); }
+  .nav-tile .kicker { font-size: 11px; letter-spacing: 0.22em; font-weight: 700; color: var(--bp-accent5); text-transform: uppercase; }
+  .nav-tile h4 { font-size: 20px; font-weight: 700; color: var(--bp-dk2); }
+  .nav-tile p { font-size: 13px; color: var(--bp-dk2); opacity: 0.8; line-height: 1.6; margin-top: auto; }
+  @media (max-width: 900px) {
+    .ceo-block { grid-template-columns: 1fr; }
+    .nav-tiles { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="about">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="sep">/</span>
+    <span>About</span>
+  </nav>
+  <h1 class="ko-only">회사소개<span class="en">About Bioprotech</span></h1>
+  <h1 class="en-only">About Bioprotech<span class="en">Company Overview</span></h1>
+  <h1 class="es-only">Empresa<span class="en">Perfil de la empresa</span></h1>
+  <p class="lead ko-only">
+    2000년 설립 이래 의료용 바이오센서 한 분야에 집중해 온 기업입니다. Bio sensors와 Bio products라는 두 축으로 수술·진단·재활 전 영역에서 임상 현장과 함께합니다.
+  </p>
+  <p class="lead en-only">
+    Since 2000, Bioprotech has focused exclusively on medical biosensors. With Bio sensors and Bio products as our two pillars, we support the clinical field across surgery, diagnostics, and rehabilitation.
+  </p>
+  <p class="lead es-only">
+    Desde el año 2000, Bioprotech se ha dedicado exclusivamente a los biosensores médicos. Con Bio sensors y Bio products como nuestros dos pilares, acompañamos al ámbito clínico en cirugía, diagnóstico y rehabilitación.
+  </p>
+</section>
+
+<main class="page-body">
+  <div class="bp-kicker">CEO Message</div>
+  <div class="ceo-block">
+    <div class="placeholder-img" data-label="CEO Portrait"></div>
+    <div>
+      <h2 class="ko-only">임상 현장의 한 순간도 가볍게 여기지 않습니다.</h2>
+      <h2 class="en-only">We do not take a single moment in the clinical field lightly.</h2>
+      <h2 class="es-only">No tomamos a la ligera ni un solo momento en el ámbito clínico.</h2>
+      <p class="placeholder-empty ko-only"><strong>대표이사 메시지</strong>대표이사 인사말이 이 자리에 들어갑니다. 초안은 사내 확정 후 반영 예정입니다.</p>
+      <p class="placeholder-empty en-only"><strong>CEO Message</strong>The CEO's message will appear here. To be confirmed internally.</p>
+      <p class="placeholder-empty es-only"><strong>Mensaje del CEO</strong>El mensaje del CEO aparecerá aquí. Pendiente de confirmación interna.</p>
+      <p class="ko-only">바이오프로테크는 2000년 강원도 원주에서 시작해, 지난 25년간 심전도 전극과 전기수술 기기, 신경·통증 관리 제품을 만들어 왔습니다. 의료진과 환자의 안전이라는 단 하나의 기준으로 제품을 설계하고 생산합니다.</p>
+      <p class="en-only">Bioprotech began in Wonju, Korea in 2000, and over the past 25 years has built ECG electrodes, electrosurgical devices, and neuro/pain management products. We design and manufacture every product around a single standard — the safety of clinicians and patients.</p>
+      <p class="es-only">Bioprotech comenzó en Wonju, Corea, en el año 2000 y, durante los últimos 25 años, ha fabricado electrodos de ECG, dispositivos de electrocirugía y productos de neurología y tratamiento del dolor. Diseñamos y fabricamos cada producto bajo un único criterio: la seguridad del personal médico y de los pacientes.</p>
+      <p class="ko-only">국내 본사와 미국 판매법인, 중국 연태·광저우 생산법인의 4개 법인이 유기적으로 연결된 공급망을 바탕으로, 전 세계 의료진이 믿고 사용할 수 있는 1회용 바이오센서 공급을 이어갑니다.</p>
+      <p class="en-only">Our Korean HQ, US sales entity, and Chinese manufacturing hubs in Yantai and Guangzhou form an integrated supply chain that continues to deliver disposable biosensors trusted by clinicians worldwide.</p>
+      <p class="es-only">Nuestra sede central en Corea, la filial de ventas en EE. UU. y las plantas de fabricación en Yantai y Guangzhou (China) conforman una cadena de suministro integrada que sigue entregando biosensores desechables en los que confía el personal médico de todo el mundo.</p>
+      <div class="sign">㈜바이오프로테크 · CEO</div>
+    </div>
+  </div>
+
+  <div class="bp-kicker">Company Profile</div>
+  <div class="info-table">
+    <table class="ko-only">
+      <tbody>
+        <tr><th>회사명</th><td>㈜바이오프로테크 (Bio Protech Co., Ltd.)</td></tr>
+        <tr><th>설립일</th><td>2000년 5월 19일</td></tr>
+        <tr><th>대표이사</th><td><span class="placeholder-empty" style="display:inline-block; padding:6px 12px; margin:0;">준비 중</span></td></tr>
+        <tr><th>사업자등록번호</th><td>108-81-22350</td></tr>
+        <tr><th>본사</th><td>(26365) 강원도 원주시 문막읍 동화공단로 151-3 (동화첨단의료기기산업단지)</td></tr>
+        <tr><th>연락처</th><td>전화 033-735-7720 · 팩스 033-735-7736 · info@protechsite.com</td></tr>
+        <tr><th>주요 사업</th><td>의료용 바이오센서, 전기수술 기기, 심전도·신경진단·통증관리 전극 제조</td></tr>
+        <tr><th>임직원</th><td>79명 (한국 본사 기준)</td></tr>
+        <tr><th>법인 현황</th><td>한국 BPH · 미국 BPU · 중국 연태 BPC · 중국 광저우 BPG</td></tr>
+      </tbody>
+    </table>
+    <table class="en-only">
+      <tbody>
+        <tr><th>Company</th><td>Bio Protech Co., Ltd.</td></tr>
+        <tr><th>Founded</th><td>May 19, 2000</td></tr>
+        <tr><th>CEO</th><td><span class="placeholder-empty" style="display:inline-block; padding:6px 12px; margin:0;">Pending</span></td></tr>
+        <tr><th>Business Reg. No.</th><td>108-81-22350</td></tr>
+        <tr><th>Headquarters</th><td>(26365) 151-3 Donghwagongdan-ro, Munmak-eup, Wonju-si, Gangwon-do, Korea</td></tr>
+        <tr><th>Contact</th><td>Tel +82-33-735-7720 · Fax +82-33-735-7736 · info@protechsite.com</td></tr>
+        <tr><th>Business</th><td>Manufacturing of medical biosensors, electrosurgical devices, ECG/EEG/EMG/TENS electrodes</td></tr>
+        <tr><th>Employees</th><td>79 (Korea HQ)</td></tr>
+        <tr><th>Entities</th><td>Korea BPH · USA BPU · China BPC (Yantai) · China BPG (Guangzhou)</td></tr>
+      </tbody>
+    </table>
+    <table class="es-only">
+      <tbody>
+        <tr><th>Empresa</th><td>Bio Protech Co., Ltd.</td></tr>
+        <tr><th>Fundación</th><td>19 de mayo de 2000</td></tr>
+        <tr><th>CEO</th><td><span class="placeholder-empty" style="display:inline-block; padding:6px 12px; margin:0;">Pendiente</span></td></tr>
+        <tr><th>N.º de registro mercantil</th><td>108-81-22350</td></tr>
+        <tr><th>Sede central</th><td>(26365) 151-3 Donghwagongdan-ro, Munmak-eup, Wonju-si, Gangwon-do, Corea</td></tr>
+        <tr><th>Contacto</th><td>Tel. +82-33-735-7720 · Fax +82-33-735-7736 · info@protechsite.com</td></tr>
+        <tr><th>Actividad</th><td>Fabricación de biosensores médicos, dispositivos de electrocirugía y electrodos de ECG/EEG/EMG/TENS</td></tr>
+        <tr><th>Empleados</th><td>79 (sede de Corea)</td></tr>
+        <tr><th>Entidades</th><td>Corea BPH · EE. UU. BPU · China BPC (Yantai) · China BPG (Guangzhou)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="nav-tiles">
+    <a class="nav-tile" href="history.html">
+      <span class="kicker">History</span>
+      <h4 class="ko-only">연혁</h4><h4 class="en-only">History</h4><h4 class="es-only">Historia</h4>
+      <p class="ko-only">2000년 설립부터 현재까지의 주요 마일스톤.</p>
+      <p class="en-only">Key milestones from 2000 to today.</p>
+      <p class="es-only">Principales hitos desde su fundación en el año 2000 hasta hoy.</p>
+    </a>
+    <a class="nav-tile" href="global.html">
+      <span class="kicker">Global</span>
+      <h4 class="ko-only">글로벌 네트워크</h4><h4 class="en-only">Global Network</h4><h4 class="es-only">Red global</h4>
+      <p class="ko-only">한국·미국·중국 4개 법인의 역할과 거점.</p>
+      <p class="en-only">Four entities across Korea, USA, and China.</p>
+      <p class="es-only">Cuatro entidades en Corea, EE. UU. y China.</p>
+    </a>
+    <a class="nav-tile" href="rnd.html">
+      <span class="kicker">R&amp;D</span>
+      <h4 class="ko-only">연구개발</h4><h4 class="en-only">R&amp;D</h4><h4 class="es-only">I+D</h4>
+      <p class="ko-only">하이드로젤·접착·센서 설계의 자체 기술.</p>
+      <p class="en-only">In-house hydrogel, adhesive, and sensor technology.</p>
+      <p class="es-only">Tecnología propia de hidrogel, adhesivos y diseño de sensores.</p>
+    </a>
+    <a class="nav-tile" href="quality.html">
+      <span class="kicker">Quality</span>
+      <h4 class="ko-only">품질·인증</h4><h4 class="en-only">Quality &amp; Certification</h4><h4 class="es-only">Calidad y certificación</h4>
+      <p class="ko-only">FDA · CE · ISO · KGMP 국제 인증 보유.</p>
+      <p class="en-only">FDA · CE · ISO · KGMP certifications held.</p>
+      <p class="es-only">Certificaciones FDA · CE · ISO · KGMP.</p>
+    </a>
+    <a class="nav-tile" href="../downloads/index.html">
+      <span class="kicker">Resources</span>
+      <h4 class="ko-only">자료실</h4><h4 class="en-only">Resources</h4><h4 class="es-only">Recursos</h4>
+      <p class="ko-only">카탈로그·SDS·인증서 다운로드.</p>
+      <p class="en-only">Catalog, SDS, and certification downloads.</p>
+      <p class="es-only">Descarga de catálogos, SDS y certificados.</p>
+    </a>
+    <a class="nav-tile" href="../support/contact.html">
+      <span class="kicker">Contact</span>
+      <h4 class="ko-only">문의하기</h4><h4 class="en-only">Contact</h4><h4 class="es-only">Contacto</h4>
+      <p class="ko-only">견적·샘플·파트너십 문의 접수.</p>
+      <p class="en-only">Quote, sample, and partnership inquiries.</p>
+      <p class="es-only">Solicitudes de presupuesto, muestras y colaboraciones.</p>
+    </a>
+  </div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/chrome.js"></script>
+</body>
+</html>

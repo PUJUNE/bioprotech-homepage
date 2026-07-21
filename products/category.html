@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>카테고리 | 바이오프로테크</title>
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .prod-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--bp-lt2);
+    border: 1px solid var(--bp-lt2);
+  }
+  .prod-card {
+    background: #fff;
+    padding: 28px;
+    display: flex; flex-direction: column;
+    gap: 16px;
+    min-height: 300px;
+    transition: background .2s;
+  }
+  .prod-card:hover { background: var(--bp-lt-bluegray); }
+  .prod-card .thumb {
+    background: #F1F3F7;
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--bp-accent5); font-weight: 700;
+  }
+  .prod-card h4 { font-size: 17px; font-weight: 700; color: var(--bp-dk2); }
+  .prod-card p { font-size: 13px; color: var(--bp-dk2); opacity: 0.75; margin-top: auto; }
+  .prod-card .go { font-size: 10px; letter-spacing: 0.22em; font-weight: 700; color: var(--bp-accent5); text-transform: uppercase; }
+  @media (max-width: 900px) { .prod-grid { grid-template-columns: 1fr; } }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="products">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero" id="hero">
+  <nav class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="sep">/</span>
+    <a href="index.html">Products</a>
+    <span class="sep">/</span>
+    <span id="crumb-cat">—</span>
+  </nav>
+  <h1 id="h1">—<span class="en" id="h1-en">—</span></h1>
+  <p class="lead" id="desc"></p>
+</section>
+
+<main class="page-body">
+  <div class="prod-grid" id="prods"></div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/chrome.js"></script>
+<script>
+(async function () {
+  const catId = window.bpQuery('cat');
+  if (!catId) { location.replace('index.html'); return; }
+
+  const res = await fetch('../assets/data/products.json');
+  const data = await res.json();
+  const lang = window.bpLang();
+  const cat = data.categories.find(c => c.id === catId);
+  if (!cat) {
+    document.getElementById('h1').textContent = 'Not Found';
+    return;
+  }
+
+  document.title = `${cat.name[lang]} · ${cat.sub[lang]} | 바이오프로테크`;
+  document.getElementById('crumb-cat').textContent = cat.name[lang];
+  document.getElementById('h1').textContent = cat.name[lang];
+  document.getElementById('h1-en').textContent = cat.sub[lang];
+  document.getElementById('desc').textContent = cat.desc[lang];
+
+  const prods = data.products
+    .filter(p => p.cat === catId)
+    .sort((a,b) => a.order - b.order);
+
+  document.getElementById('prods').innerHTML = prods.map(p => `
+    <a class="prod-card" href="detail.html?id=${p.id}">
+      <div class="thumb">Image pending</div>
+      <h4>${p.name[lang]}</h4>
+      <p>${p.tagline[lang]}</p>
+      <span class="go">${({ko:'자세히 보기 →', en:'View detail →', es:'Ver detalle →'})[lang] || '자세히 보기 →'}</span>
+    </a>
+  `).join('');
+})();
+</script>
+</body>
+</html>

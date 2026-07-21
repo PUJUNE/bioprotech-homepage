@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>제품 상세 | 바이오프로테크</title>
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .gallery .main-img {
+    height: 420px;
+  }
+  .gallery .thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .gallery .thumbs .placeholder-img { min-height: 80px; }
+  .info .name {
+    font-size: 32px; font-weight: 700;
+    color: var(--bp-accent5); line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .info .name .en {
+    display: block; font-size: 13px; font-weight: 400;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bp-dk2); opacity: 0.7; margin-top: 10px;
+  }
+  .info .tag {
+    font-size: 14px; line-height: 1.75;
+    color: var(--bp-dk2); opacity: 0.85;
+    margin-bottom: 24px;
+  }
+  .spec-block { margin-top: 32px; }
+  .spec-block h3 {
+    font-size: 13px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--bp-accent5);
+    margin-bottom: 12px; font-weight: 700;
+  }
+  .spec-table {
+    width: 100%;
+    border-top: 1px solid var(--bp-lt2);
+  }
+  .spec-table tr { border-bottom: 1px solid var(--bp-lt2); }
+  .spec-table th, .spec-table td {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 13px;
+    vertical-align: top;
+  }
+  .spec-table th {
+    width: 40%;
+    background: #F7F8FA;
+    font-weight: 700;
+    color: var(--bp-dk2);
+    letter-spacing: 0.05em;
+  }
+  .spec-table td { color: var(--bp-dk2); opacity: 0.9; }
+  .actions { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+  .related { margin-top: 100px; }
+  .related h3 {
+    font-size: 20px; font-weight: 700; color: var(--bp-accent5);
+    margin-bottom: 20px;
+  }
+  .rel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--bp-lt2);
+    border: 1px solid var(--bp-lt2);
+  }
+  .rel-card {
+    background: #fff; padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    min-height: 140px; transition: background .2s;
+  }
+  .rel-card:hover { background: var(--bp-lt-bluegray); }
+  .rel-card h4 { font-size: 13px; font-weight: 700; color: var(--bp-dk2); }
+  .rel-card p { font-size: 11px; color: var(--bp-dk2); opacity: 0.7; margin-top: auto; }
+
+  @media (max-width: 900px) {
+    .detail-grid { grid-template-columns: 1fr; gap: 32px; }
+    .rel-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="products">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="sep">/</span>
+    <a href="index.html">Products</a>
+    <span class="sep">/</span>
+    <a id="crumb-cat" href="#">—</a>
+    <span class="sep">/</span>
+    <span id="crumb-prod">—</span>
+  </nav>
+  <h1 id="prod-h1">—</h1>
+</section>
+
+<main class="page-body">
+  <div class="detail-grid">
+    <div class="gallery">
+      <div class="placeholder-img main-img" data-label="Main Image"></div>
+      <div class="thumbs">
+        <div class="placeholder-img" data-label="Top"></div>
+        <div class="placeholder-img" data-label="Side"></div>
+        <div class="placeholder-img" data-label="Perspective"></div>
+        <div class="placeholder-img" data-label="Detail"></div>
+      </div>
+    </div>
+    <div class="info">
+      <div class="name" id="name-block">—<span class="en" id="name-en">—</span></div>
+      <p class="tag" id="tag">—</p>
+
+      <div class="placeholder-empty ko-only">
+        <strong>제품 설명</strong>
+        상세 설명은 준비 중입니다. 제품별 특장점, 사용 방법, 주의 사항이 이 자리에 들어갑니다.
+      </div>
+      <div class="placeholder-empty en-only">
+        <strong>Product Description</strong>
+        Detailed description pending. Key features, usage, and precautions will appear here.
+      </div>
+      <div class="placeholder-empty es-only">
+        <strong>Descripción del producto</strong>
+        Descripción detallada en preparación. Las características, el modo de uso y las precauciones aparecerán aquí.
+      </div>
+
+      <div class="spec-block">
+        <h3>Specifications</h3>
+        <table class="spec-table">
+          <tbody>
+            <tr><th>Model No.</th><td>—</td></tr>
+            <tr><th>Dimensions</th><td>—</td></tr>
+            <tr><th>Material</th><td>—</td></tr>
+            <tr><th>Packaging</th><td>—</td></tr>
+            <tr><th>Sterilization</th><td>—</td></tr>
+            <tr><th>Shelf Life</th><td>—</td></tr>
+            <tr><th>Certification</th><td>—</td></tr>
+          </tbody>
+        </table>
+        <p class="placeholder-empty ko-only"><strong>스펙 데이터</strong>실제 수치는 제품 시험성적서·카탈로그 확정 후 반영합니다.</p>
+        <p class="placeholder-empty en-only"><strong>Specification data</strong>Actual figures to be populated after test reports and catalogs are finalized.</p>
+        <p class="placeholder-empty es-only"><strong>Datos de especificaciones</strong>Las cifras reales se completarán tras finalizar los informes de ensayo y los catálogos.</p>
+      </div>
+
+      <div class="spec-block">
+        <h3>Downloads</h3>
+        <p class="placeholder-empty ko-only"><strong>카탈로그 · SDS</strong>PDF 자료가 이 자리에 첨부됩니다. (Resources 페이지에서 통합 다운로드 예정)</p>
+        <p class="placeholder-empty en-only"><strong>Catalog · SDS</strong>PDF files will be attached here (to be consolidated on the Resources page).</p>
+        <p class="placeholder-empty es-only"><strong>Catálogo · SDS</strong>Los archivos PDF se adjuntarán aquí (se consolidarán en la página de Recursos).</p>
+      </div>
+
+      <div class="actions">
+        <a href="../support/contact.html?subject=quote" class="btn btn-primary">
+          <span class="ko-only">견적 문의</span><span class="en-only">Get a Quote</span><span class="es-only">Solicitar presupuesto</span> <span class="arrow">→</span>
+        </a>
+        <a href="../downloads/index.html" class="btn btn-ghost"><span class="ko-only">카탈로그 다운로드</span><span class="en-only">Download Catalog</span><span class="es-only">Descargar catálogo</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="related">
+    <h3 id="related-title">같은 카테고리 제품</h3>
+    <div class="rel-grid" id="rel-grid"></div>
+  </section>
+
+  <script>
+    // Localize static phrase when lang is KO (EN handled by existing inline script)
+    (function(){ if (window.bpLang && window.bpLang()==='ko') {
+      document.getElementById('related-title').textContent = '같은 카테고리 제품';
+    }})();
+  </script>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/chrome.js"></script>
+<script>
+(async function () {
+  const id = window.bpQuery('id');
+  if (!id) { location.replace('index.html'); return; }
+
+  const res = await fetch('../assets/data/products.json');
+  const data = await res.json();
+  const lang = window.bpLang();
+  const prod = data.products.find(p => p.id === id);
+  if (!prod) {
+    document.getElementById('prod-h1').textContent = 'Not Found';
+    return;
+  }
+  const cat = data.categories.find(c => c.id === prod.cat);
+
+  document.title = `${prod.name[lang]} | 바이오프로테크`;
+  document.getElementById('crumb-cat').textContent = cat.name[lang];
+  document.getElementById('crumb-cat').href = `category.html?cat=${cat.id}`;
+  document.getElementById('crumb-prod').textContent = prod.name[lang];
+  document.getElementById('prod-h1').textContent = prod.name[lang];
+  document.getElementById('name-block').firstChild.nodeValue = prod.name[lang];
+  document.getElementById('name-en').textContent = prod.tagline[lang];
+  document.getElementById('tag').textContent = prod.tagline[lang];
+
+  if (lang === 'en') {
+    document.getElementById('related-title').textContent = 'Related Products';
+  } else if (lang === 'es') {
+    document.getElementById('related-title').textContent = 'Productos relacionados';
+  }
+
+  const related = data.products
+    .filter(p => p.cat === prod.cat && p.id !== prod.id)
+    .slice(0, 4);
+
+  document.getElementById('rel-grid').innerHTML = related.map(p => `
+    <a class="rel-card" href="detail.html?id=${p.id}">
+      <h4>${p.name[lang]}</h4>
+      <p>${p.tagline[lang]}</p>
+    </a>
+  `).join('');
+})();
+</script>
+</body>
+</html>

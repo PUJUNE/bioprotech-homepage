@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>품질·인증 | 바이오프로테크</title>
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .cert-badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--bp-lt2); border: 1px solid var(--bp-lt2); }
+  .cert-badge { background: #fff; padding: 36px 28px; display: flex; flex-direction: column; gap: 12px; min-height: 220px; }
+  .cert-badge .code { font-size: 22px; font-weight: 700; color: var(--bp-accent5); letter-spacing: 0.02em; }
+  .cert-badge h4 { font-size: 14px; font-weight: 700; color: var(--bp-dk2); }
+  .cert-badge p { font-size: 12px; line-height: 1.65; color: var(--bp-dk2); opacity: 0.8; margin-top: auto; }
+  .cert-badge .dl { font-size: 11px; letter-spacing: 0.2em; font-weight: 700; color: var(--bp-accent5); text-transform: uppercase; margin-top: 8px; }
+  @media (max-width: 900px) { .cert-badges { grid-template-columns: 1fr; } }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="about">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="sep">/</span>
+    <a href="about.html">About</a>
+    <span class="sep">/</span>
+    <span>Quality</span>
+  </nav>
+  <h1 class="ko-only">품질·인증<span class="en">Quality &amp; Certification</span></h1>
+  <h1 class="en-only">Quality &amp; Certification<span class="en">International Standards</span></h1>
+  <h1 class="es-only">Calidad y certificación<span class="en">Normas internacionales</span></h1>
+  <p class="lead ko-only">FDA · CE · ISO · KGMP — 제품마다 요구되는 모든 국제 규제 인증을 자체적으로 취득하고 관리합니다.</p>
+  <p class="lead en-only">FDA · CE · ISO · KGMP — every regulatory certification required for each product is obtained and maintained in-house.</p>
+  <p class="lead es-only">FDA · CE · ISO · KGMP: la empresa obtiene y mantiene internamente todas las certificaciones regulatorias internacionales que requiere cada producto.</p>
+</section>
+
+<main class="page-body">
+  <div class="cert-badges">
+    <div class="cert-badge"><div class="code">ISO 13485</div><h4>Medical Device QMS</h4><p class="ko-only">의료기기 품질경영시스템 국제 표준.</p><p class="en-only">International standard for medical device quality management.</p><p class="es-only">Norma internacional del sistema de gestión de calidad de dispositivos médicos.</p><span class="dl">Download PDF →</span></div>
+    <div class="cert-badge"><div class="code">ISO 14001</div><h4>Environmental Management</h4><p class="ko-only">환경경영시스템 국제 표준.</p><p class="en-only">International standard for environmental management.</p><p class="es-only">Norma internacional del sistema de gestión ambiental.</p><span class="dl">Download PDF →</span></div>
+    <div class="cert-badge"><div class="code">CE MDR</div><h4>European Conformity</h4><p class="ko-only">유럽 의료기기 신규제(MDR) 적합성.</p><p class="en-only">Conformity to the new European Medical Device Regulation.</p><p class="es-only">Conformidad con el nuevo Reglamento europeo de dispositivos médicos (MDR).</p><span class="dl">Download PDF →</span></div>
+    <div class="cert-badge"><div class="code">FDA 510(k)</div><h4>US Food &amp; Drug</h4><p class="ko-only">미국 FDA 등록 의료기기.</p><p class="en-only">US FDA-registered medical devices.</p><p class="es-only">Dispositivos médicos registrados ante la FDA de EE. UU.</p><span class="dl">Download PDF →</span></div>
+    <div class="cert-badge"><div class="code">KGMP</div><h4>Korea GMP</h4><p class="ko-only">국내 의료기기 제조 및 품질관리 기준.</p><p class="en-only">Korean standard for medical device manufacturing and quality control.</p><p class="es-only">Norma coreana de fabricación y control de calidad de dispositivos médicos.</p><span class="dl">Download PDF →</span></div>
+    <div class="cert-badge"><div class="code">MFDS</div><h4 class="ko-only">식약처 허가</h4><h4 class="en-only">MFDS Approval</h4><h4 class="es-only">Aprobación de la MFDS</h4><p class="ko-only">식품의약품안전처 의료기기 허가.</p><p class="en-only">Medical device approval by the Korean Ministry of Food and Drug Safety.</p><p class="es-only">Aprobación de dispositivos médicos por el Ministerio de Seguridad de Alimentos y Medicamentos de Corea.</p><span class="dl">Download PDF →</span></div>
+  </div>
+
+  <p class="placeholder-empty ko-only" style="margin-top:40px"><strong>인증서 PDF 첨부</strong>인증서 사본은 Resources 페이지의 품질·인증 섹션에서 통합 관리할 예정입니다. 개별 다운로드 링크는 파일 준비 후 연결됩니다.</p>
+  <p class="placeholder-empty en-only" style="margin-top:40px"><strong>Certificate PDFs</strong>Certificate copies will be consolidated under the Quality section of the Resources page. Individual download links will be connected once files are prepared.</p>
+  <p class="placeholder-empty es-only" style="margin-top:40px"><strong>PDF de certificados</strong>Las copias de los certificados se gestionarán de forma centralizada en la sección de Calidad de la página de Recursos. Los enlaces de descarga individuales se conectarán una vez preparados los archivos.</p>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/chrome.js"></script>
+</body>
+</html>

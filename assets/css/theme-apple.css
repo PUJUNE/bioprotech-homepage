@@ -1,0 +1,267 @@
+/* =========================================================
+   Bioprotech Homepage v3-1 — Apple Style Component Overrides
+   Loaded last in <head>; reshapes v2 chrome into Apple idiom:
+   pill buttons, 18px rounded cards, hairline grays, light footer,
+   translucent blurred header, cinematic dark hero.
+   ========================================================= */
+
+/* ============ GLOBAL TYPE FEEL ============ */
+body { letter-spacing: -0.011em; }
+h1, h2, h3, h4 { letter-spacing: -0.02em; }
+
+/* Kicker squares → none (Apple uses plain small-caps-free eyebrows) */
+.bp-kicker::before,
+.section-sidebar .kicker::before,
+.history-sidebar .kicker::before,
+.products-sidebar .kicker::before,
+.global-sidebar .kicker::before { display: none; }
+.bp-kicker, .section-sidebar .kicker, .history-sidebar .kicker {
+  letter-spacing: 0.08em; font-weight: 600;
+}
+
+/* Headings: ink, not blue */
+.section-h2,
+.products-sidebar h2,
+.history-sidebar h2,
+.global-sidebar h2,
+.cert-header h3 { color: var(--bp-dk2); }
+.section-h2 .en, .history-sidebar h2 .en { color: var(--ap-text-secondary); }
+.stat .num { color: var(--bp-dk2); }
+.tl-year { color: var(--bp-dk2); }
+
+/* Sub-page headings: ink, not blue (eyebrows·numbers·links stay blue) */
+.cat-head h2, .ceo-block h2, .contact-info h3, .form-wrap h3,
+.legal-body h2, .search-group h3, .spec-block h3, .related h3,
+.article-title, .info .name { color: var(--bp-dk2); }
+
+/* ============ HEADER — translucent blur ============ */
+.bp-header.scrolled, .bp-header.solid {
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+.bp-nav a { font-weight: 500; letter-spacing: 0; }
+.bp-nav a::after { height: 1px; background: currentColor; }
+.bp-header .brand .mark { border-radius: 9px; }
+.bp-header-cta .pill { border-radius: var(--ap-radius-pill); }
+
+/* ============ BUTTONS — Apple pills ============ */
+.btn, .btn-primary, .btn-ghost {
+  border-radius: var(--ap-radius-pill);
+  letter-spacing: 0;
+  font-weight: 500;
+  padding: 14px 28px;
+}
+.page-body .btn-primary, .section-main .btn-primary, .cert .btn-primary {
+  background: var(--bp-accent5); color: #fff;
+}
+.page-body .btn-primary:hover, .section-main .btn-primary:hover {
+  background: #0077ed;
+}
+
+/* ============ CARDS — rounded, separated, soft shadow ============ */
+.product-grid {
+  gap: 20px;
+  background: transparent;
+  border: 0;
+}
+.product-card {
+  border-radius: var(--ap-radius-card);
+  box-shadow: var(--ap-shadow-card);
+  transition: transform .3s ease, box-shadow .3s ease, background .25s;
+}
+.product-card:hover {
+  background: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+}
+.product-card .icon { border-radius: 14px; }
+
+.cert-badges { gap: 16px; background: transparent; border: 0; }
+.cert-badge { border-radius: var(--ap-radius-card); box-shadow: var(--ap-shadow-card); }
+
+.rnd-card { border-right: 0; }
+
+/* Surfaces hard-coded #F7F8FA in v2 → Apple #f5f5f7 */
+.products-main, .history-main, .cert { background: #f5f5f7; }
+
+/* ============ HERO — cinematic dark ============ */
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.75) 100%);
+}
+.hero-tag { letter-spacing: 0.08em; }
+.hero-tag::before { background: var(--bp-accent1); height: 2px; }
+.hero-title { font-weight: 700; letter-spacing: -0.025em; }
+.hero-indicators i { border-radius: 2px; }
+.hero .btn-primary { background: #fff; color: #1d1d1f; }
+.hero .btn-primary:hover { background: var(--bp-accent5); color: #fff; }
+
+/* Sub-page hero: dark cinematic instead of blue gradient */
+.page-hero { background: var(--bp-gradient-primary); }
+
+/* ============ TIMELINE ============ */
+.tl-year::after { border-radius: 50%; background: var(--bp-accent5); }
+
+/* ============ CTA BAND — black band, white pill ============ */
+.cta-band { background: #000; }
+.cta-left { background: #1d1d1f; }
+.cta-right .btn-primary { background: #fff; color: #1d1d1f; }
+.cta-right .btn-primary:hover { background: var(--bp-accent5); color: #fff; }
+
+/* ============ FOOTER — Apple light footer ============ */
+footer {
+  background: #f5f5f7;
+  color: var(--ap-text-secondary);
+}
+.foot-grid { border-bottom: 1px solid #d2d2d7; }
+.foot-brand .mark { color: var(--bp-dk2); }
+.foot-brand .mark-sq { border-radius: 9px; }
+.foot-info { opacity: 1; color: var(--ap-text-secondary); }
+.foot-col h5 { color: var(--bp-dk2); letter-spacing: 0.02em; text-transform: none; }
+.foot-col a { color: #424245; opacity: 1; }
+.foot-col a:hover { color: #000; text-decoration: underline; }
+.foot-bottom { opacity: 1; color: var(--ap-text-secondary); }
+
+/* ============ FLOATING ============ */
+.floating a, .floating button { border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,0.18); }
+
+/* ============ FORMS ============ */
+.form-row input, .form-row textarea, .form-row select {
+  border-radius: var(--ap-radius-input);
+}
+.form-row label { text-transform: none; letter-spacing: 0; font-weight: 600; }
+.form-msg { border-radius: var(--ap-radius-input); border-left-width: 0; padding-left: 24px; }
+.form-msg.ok, .form-msg.err { border-left-width: 3px; }
+
+/* ============ MEGA MENU ============ */
+.nav-has-mega { position: relative; }
+
+/* 트리거 버튼 — .bp-nav a 와 동일한 스타일 */
+.nav-mega-btn {
+  font-size: 14px; font-weight: 700; letter-spacing: 0.04em;
+  background: none; border: 0; cursor: pointer; color: inherit;
+  padding: 8px 0; position: relative;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.nav-mega-btn::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: var(--bp-accent1);
+  transform: scaleX(0); transition: transform .2s ease;
+}
+.nav-mega-btn.active::after,
+.nav-mega-btn:hover::after,
+.nav-has-mega.open .nav-mega-btn::after { transform: scaleX(1); }
+
+.bp-header:not(.scrolled):not(.solid) .nav-mega-btn { color: #fff; }
+.bp-header.scrolled .nav-mega-btn,
+.bp-header.solid   .nav-mega-btn { color: var(--bp-dk2); }
+.bp-header.scrolled .nav-mega-btn:hover,
+.bp-header.solid   .nav-mega-btn:hover,
+.bp-header.scrolled .nav-has-mega.open .nav-mega-btn,
+.bp-header.solid   .nav-has-mega.open .nav-mega-btn { color: var(--bp-accent5); }
+
+/* 메가메뉴 패널 — 뷰포트 전폭, 완전 불투명 짙은 배경 */
+.nav-mega {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: rgba(0,0,0,0.90);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 9999;
+  opacity: 0; pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-has-mega.open .nav-mega {
+  opacity: 1; pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* 내부 래퍼 — 좌우 여백 넓게 */
+.mega-wrap {
+  max-width: 1400px; margin: 0 auto;
+  padding: 44px 64px 36px;
+}
+
+/* 4컬럼 가로 그리드 */
+.mega-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding-bottom: 28px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mega-col {
+  padding: 0 32px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.mega-col:first-child { padding-left: 0; }
+.mega-col:last-child  { border-right: 0; padding-right: 0; }
+
+/* 카테고리 헤더 */
+.mega-cat {
+  display: block;
+  padding-bottom: 14px; margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.mega-cat-ko {
+  display: block; font-size: 16px; font-weight: 700;
+  color: #ffffff; line-height: 1.2;
+  transition: color .15s;
+}
+.mega-cat-code {
+  display: block; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.38); margin-top: 5px;
+}
+.mega-cat:hover .mega-cat-ko { color: #6fa8ff; }
+
+/* 제품 목록 — 세로 */
+.mega-items { display: flex; flex-direction: column; }
+.mega-item {
+  font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,0.70);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  line-height: 1.35;
+  transition: color .15s, padding-left .15s;
+}
+.mega-item:last-child { border-bottom: 0; }
+.mega-item:hover { color: #fff; padding-left: 6px; }
+
+/* 전체 제품 보기 */
+.mega-foot { text-align: right; }
+.mega-foot a {
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  transition: color .15s;
+}
+.mega-foot a:hover { color: #fff; }
+
+/* 모바일 (900px 이하) */
+@media (max-width: 900px) {
+  .nav-mega {
+    position: static;
+    opacity: 1; transform: none; pointer-events: auto;
+    background: #1a1a1a; box-shadow: none;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .nav-has-mega.open .nav-mega { max-height: 1600px; }
+  .mega-wrap { padding: 12px 0 20px; max-width: none; }
+  .mega-inner { grid-template-columns: 1fr; padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+  .mega-col { padding: 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 12px 0; }
+  .mega-col:last-child { border-bottom: 0; }
+  .mega-item { font-size: 12px; color: rgba(255,255,255,0.65); }
+  .mega-foot { display: none; }
+  .nav-mega-btn { width: 100%; text-align: left; padding: 16px 0; border-bottom: 1px solid var(--bp-lt2); }
+  .nav-mega-btn::after { display: none; }
+}
+
+/* ============ PLACEHOLDERS ============ */
+.placeholder-img { border-radius: var(--ap-radius-card); color: var(--ap-text-secondary); }
+.placeholder-empty { border-radius: var(--ap-radius-input); border-left-color: var(--bp-accent5); }
+.placeholder-empty strong { color: var(--ap-text-secondary); }

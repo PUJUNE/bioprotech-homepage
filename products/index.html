@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>제품 · Products | 바이오프로테크</title>
+<meta name="description" content="바이오프로테크 제품 전체 라인업 — 전기수술, 심전도, 신경진단, 통증관리." />
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .cat-section {
+    padding: 80px 72px 40px calc(var(--bp-sb-w-content) + 72px);
+    border-bottom: 1px solid var(--bp-lt2);
+  }
+  .cat-section:last-child { border-bottom: 0; padding-bottom: 100px; }
+  .cat-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    margin-bottom: 40px;
+    align-items: start;
+  }
+  .cat-head .num {
+    font-size: 11px; letter-spacing: 0.22em; font-weight: 700;
+    color: var(--bp-accent5); margin-bottom: 12px;
+  }
+  .cat-head h2 {
+    font-size: 32px; font-weight: 700; color: var(--bp-accent5);
+    line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .cat-head h2 .en {
+    display: block; font-size: 12px; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bp-dk2); opacity: 0.7; margin-top: 10px;
+  }
+  .cat-head p {
+    font-size: 14px; line-height: 1.85;
+    color: var(--bp-dk2); opacity: 0.85;
+  }
+  .prod-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--bp-lt2);
+    border: 1px solid var(--bp-lt2);
+  }
+  .prod-card {
+    background: #fff;
+    padding: 24px;
+    display: flex; flex-direction: column;
+    gap: 14px;
+    min-height: 260px;
+    transition: background .2s;
+  }
+  .prod-card:hover { background: var(--bp-lt-bluegray); }
+  .prod-card .thumb {
+    background: #F1F3F7;
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--bp-accent5); font-weight: 700;
+    text-transform: uppercase;
+  }
+  .prod-card h4 {
+    font-size: 15px; font-weight: 700;
+    color: var(--bp-dk2); line-height: 1.4;
+  }
+  .prod-card p {
+    font-size: 12px; line-height: 1.6;
+    color: var(--bp-dk2); opacity: 0.75;
+    margin-top: auto;
+  }
+  .prod-card .go {
+    font-size: 10px; letter-spacing: 0.22em; font-weight: 700;
+    color: var(--bp-accent5); text-transform: uppercase;
+  }
+  @media (max-width: 1100px) { .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px)  {
+    .cat-section { padding: 56px 28px; }
+    .cat-head { grid-template-columns: 1fr; gap: 20px; }
+    .prod-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="products">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+    <a href="../index.html"><span class="ko-only">홈</span><span class="en-only">Home</span><span class="es-only">Inicio</span></a>
+    <span class="sep">/</span>
+    <span><span class="ko-only">제품</span><span class="en-only">Products</span><span class="es-only">Productos</span></span>
+  </nav>
+  <h1>
+    <span class="ko-only">제품</span><span class="en-only">Products</span><span class="es-only">Productos</span>
+    <span class="en">Product Line-up</span>
+  </h1>
+  <p class="lead">
+    <span class="ko-only">전기수술, 심전도, 신경진단, 통증관리의 4개 전문 라인업. 임상 현장의 정밀한 요구에 맞춘 1회용·비1회용 의료기기를 운영합니다.</span>
+    <span class="en-only">Four specialized lines — Electrosurgery, Cardiology, Neurology, Pain Management. A full portfolio of disposable and reusable medical devices for clinical precision.</span>
+    <span class="es-only">Cuatro líneas especializadas — Electrocirugía, ECG, Neurología, Tratamiento del dolor. Una cartera completa de dispositivos médicos desechables y reutilizables para la precisión clínica.</span>
+  </p>
+</section>
+
+<main id="catalog"></main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/chrome.js"></script>
+<script>
+(async function () {
+  const res = await fetch('../assets/data/products.json');
+  const data = await res.json();
+  const lang = window.bpLang();
+  const root = document.getElementById('catalog');
+
+  data.categories.sort((a,b) => a.order - b.order).forEach((cat, i) => {
+    const prods = data.products
+      .filter(p => p.cat === cat.id)
+      .sort((a,b) => a.order - b.order);
+
+    const section = document.createElement('section');
+    section.className = 'cat-section';
+    section.id = cat.id;
+    section.innerHTML = `
+      <div class="cat-head">
+        <div>
+          <div class="num">${String(i+1).padStart(2,'0')} / ${cat.id.toUpperCase()}</div>
+          <h2>${cat.name[lang]}<span class="en">${cat.sub[lang]}</span></h2>
+        </div>
+        <p>${cat.desc[lang]}</p>
+      </div>
+      <div class="prod-grid">
+        ${prods.map(p => `
+          <a class="prod-card" href="detail.html?id=${p.id}">
+            <div class="thumb">Image pending</div>
+            <h4>${p.name[lang]}</h4>
+            <p>${p.tagline[lang]}</p>
+            <span class="go">${({ko:'자세히 →', en:'View →', es:'Ver →'})[lang] || '자세히 →'}</span>
+          </a>
+        `).join('')}
+      </div>
+    `;
+    root.appendChild(section);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,722 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>[v2] 바이오프로테크 | Bio Sensors &amp; Bio Products</title>
+<meta name="description" content="글로벌 의료기기 전문기업 바이오프로테크. 전기수술, 심전도, 신경진단, 통증관리 분야의 1회용 바이오센서 및 의료기기 개발·제조." />
+<link rel="stylesheet" href="Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="assets/css/site.css?v=260707b" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: var(--bp-font-family);
+    color: var(--bp-dk2);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
+  /* ============ HERO (01 · 이미지 + 탭) ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    color: #fff;
+    display: flex; flex-direction: column; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-slides { position: absolute; inset: 0; z-index: 0; }
+  .hero-slides img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .hero-slides img.active { opacity: 1; }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.88) 100%);
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 1180px;
+    margin: 0 auto; padding: 0 48px;
+  }
+  .hero-content { max-width: 820px; margin: 0 auto; text-align: center; }
+  .hero-title {
+    font-size: clamp(27px, 3.5vw, 48px);
+    font-weight: 700; line-height: 1.2;
+    letter-spacing: -0.025em; margin-bottom: 28px;
+  }
+  .hero-title .en {
+    display: block; font-size: clamp(14px, 1.2vw, 18px);
+    font-weight: 400; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-top: 18px; opacity: 0.85;
+  }
+  .hero-desc {
+    font-size: 17px; line-height: 1.7; opacity: 0.92;
+    margin: 0 auto 40px; max-width: 620px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 28px;
+    font-size: 14px; font-weight: 500; letter-spacing: 0;
+    border-radius: var(--ap-radius-pill);
+    transition: background .2s, color .2s, border-color .2s, transform .15s;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: #fff; color: #1d1d1f; }
+  .btn-primary:hover { background: var(--bp-accent5); color: #fff; }
+  .btn-ghost { border: 1px solid #fff; color: #fff; }
+  .btn-ghost:hover { background: #fff; color: #1d1d1f; }
+  .btn .arrow { transition: transform .2s; }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  .hero-indicators { display: flex; gap: 8px; margin-top: 48px; align-items: center; justify-content: center; }
+  .hero-indicators i {
+    display: block; width: 32px; height: 2px; border-radius: 2px;
+    background: rgba(255,255,255,0.35); cursor: pointer; transition: background .2s;
+  }
+  .hero-indicators i.active { background: #fff; }
+  .hero-counter { font-size: 13px; letter-spacing: 0.12em; font-weight: 600; margin-left: 8px; opacity: 0.85; }
+
+  /* 탭 — 히어로 하단 카테고리 바로가기 */
+  .hero-tabs {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    background: rgba(0,0,0,0.28);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  }
+  .hero-tabs .wrap { max-width: 1180px; margin: 0 auto; display: flex; padding: 0 24px; }
+  .hero-tabs a {
+    flex: 1; padding: 22px 18px; color: #fff;
+    display: flex; flex-direction: column; gap: 5px;
+    border-left: 1px solid rgba(255,255,255,0.14);
+    transition: background .2s;
+  }
+  .hero-tabs a:first-child { border-left: 0; }
+  .hero-tabs a:hover { background: rgba(255,255,255,0.10); }
+  .hero-tabs .t-ko { font-size: 15px; font-weight: 600; }
+  .hero-tabs .t-en { font-size: 11px; opacity: 0.6; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* ============ SECTION SHELL (full-width) ============ */
+  .home-section { padding: 116px 48px; }
+  .home-section .inner { max-width: 1180px; margin: 0 auto; }
+  .sec-head { max-width: 780px; margin: 0 auto 64px; text-align: center; }
+  .sec-head .kicker {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--bp-accent5); margin-bottom: 16px;
+  }
+  .sec-head h2 {
+    font-size: clamp(30px, 3.4vw, 44px); font-weight: 700;
+    line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 18px;
+  }
+  .sec-head h2 .en {
+    display: block; font-size: 14px; font-weight: 400; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ap-text-secondary); margin-top: 12px;
+  }
+  .sec-head p { font-size: 17px; line-height: 1.75; color: var(--ap-text-secondary); }
+
+  /* ============ 02 · ABOUT (회사 설명) ============ */
+  .home-about { background: #fff; }
+  .about-intro { max-width: 880px; margin: 0 auto 64px; text-align: center; }
+  .about-intro h3 {
+    font-size: clamp(22px, 2.4vw, 30px); font-weight: 700;
+    line-height: 1.5; letter-spacing: -0.01em; margin-bottom: 20px;
+  }
+  .about-intro h3 .hl { color: var(--bp-accent5); }
+  .about-intro p { font-size: 16px; line-height: 1.9; color: var(--ap-text-secondary); }
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid var(--bp-lt2); border-bottom: 1px solid var(--bp-lt2);
+  }
+  .stat { padding: 40px 28px; border-right: 1px solid var(--bp-lt2); text-align: center; }
+  .stat:last-child { border-right: 0; }
+  .stat .num {
+    font-size: 48px; font-weight: 700; color: var(--bp-dk2);
+    line-height: 1; letter-spacing: -0.02em;
+    display: flex; align-items: baseline; justify-content: center; gap: 6px;
+  }
+  .stat .num .unit { font-size: 18px; font-weight: 400; color: var(--ap-text-secondary); }
+  .stat .label {
+    font-size: 12px; letter-spacing: 0.1em; font-weight: 600;
+    text-transform: uppercase; color: var(--bp-dk2); margin-top: 14px;
+  }
+  .stat .sub { font-size: 13px; line-height: 1.6; color: var(--ap-text-secondary); margin-top: 8px; }
+
+  /* ============ 03 · GLOBAL (글로벌 진출 + 세계지도) ============ */
+  .home-global {
+    background: var(--bp-gradient-primary);
+    color: #fff; position: relative; overflow: hidden;
+  }
+  .home-global .sec-head h2 { color: #fff; }
+  .home-global .sec-head h2 .en { color: rgba(255,255,255,0.6); }
+  .home-global .sec-head p { color: rgba(255,255,255,0.72); }
+  .worldmap-wrap { max-width: 1040px; margin: 0 auto 56px; position: relative; }
+  .worldmap-img { width: 100%; height: auto; display: block; opacity: 0.92; }
+  .worldmap-ov { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .wm-arc { fill: none; stroke: var(--bp-accent1); stroke-width: 1.1; stroke-dasharray: 4 4; opacity: 0.7; }
+  .wm-dot { fill: var(--bp-accent1); }
+  .wm-dot.hq { fill: #fff; }
+  .wm-pulse { fill: var(--bp-accent1); opacity: 0.5; transform-box: fill-box; transform-origin: center; animation: wmpulse 2.4s ease-out infinite; }
+  .wm-pulse.hq { fill: #fff; }
+  @keyframes wmpulse { 0% { transform: scale(1); opacity: 0.55; } 70% { transform: scale(3.4); opacity: 0; } 100% { opacity: 0; } }
+  .wm-label { fill: #fff; font-size: 10px; font-weight: 600; font-family: var(--bp-font-head); }
+  .wm-label-sub { fill: rgba(255,255,255,0.6); font-size: 7.5px; font-weight: 400; }
+
+  .map-legend {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    max-width: 1040px; margin: 0 auto;
+  }
+  .legend-card {
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: var(--ap-radius-card);
+    padding: 26px 22px; background: rgba(255,255,255,0.03);
+  }
+  .legend-card .code {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    color: var(--bp-accent1); margin-bottom: 12px;
+  }
+  .legend-card h4 { font-size: 17px; font-weight: 600; line-height: 1.3; margin-bottom: 6px; }
+  .legend-card h4 .en { display: block; font-size: 11px; font-weight: 400; letter-spacing: 0.08em; opacity: 0.6; margin-top: 5px; }
+  .legend-card p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.72); }
+
+  /* ============ 04 · NEWS (뉴스 / 노티스) ============ */
+  .home-news { background: #f5f5f7; }
+  .news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .news-card {
+    background: #fff; border-radius: var(--ap-radius-card);
+    box-shadow: var(--ap-shadow-card);
+    padding: 28px 26px; display: flex; flex-direction: column; gap: 14px;
+    min-height: 230px;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.10); }
+  .news-meta { display: flex; align-items: center; gap: 12px; }
+  .news-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--bp-accent5); border: 1px solid var(--bp-accent5);
+    border-radius: 980px; padding: 4px 12px;
+  }
+  .news-date { font-size: 12px; color: var(--ap-text-secondary); letter-spacing: 0.04em; }
+  .news-card h4 { font-size: 16px; font-weight: 600; line-height: 1.45; color: var(--bp-dk2); }
+  .news-card p { font-size: 13px; line-height: 1.65; color: var(--ap-text-secondary); }
+  .news-more {
+    margin-top: auto; font-size: 12px; font-weight: 600; color: var(--bp-accent5);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .news-foot { text-align: center; margin-top: 48px; }
+  .news-foot .btn-primary { background: var(--bp-accent5); color: #fff; }
+  .news-foot .btn-primary:hover { background: var(--bp-dk2); }
+
+  /* ============ 05 · CERT (인증 현황) ============ */
+  .home-cert { background: #fff; }
+  .cert-badges { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .cert-badge {
+    background: #fff; border-radius: var(--ap-radius-card);
+    box-shadow: var(--ap-shadow-card);
+    padding: 30px 20px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .cert-badge .code { font-size: 18px; font-weight: 700; color: var(--bp-accent5); letter-spacing: 0.02em; }
+  .cert-badge .label { font-size: 11px; color: var(--ap-text-secondary); line-height: 1.5; }
+
+  /* ============ CATEGORY PANEL ============ */
+  .hero-tabs a.cat-active {
+    background: rgba(255,255,255,0.18);
+    position: relative;
+  }
+  .hero-tabs a.cat-active::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 3px;
+    background: #fff;
+  }
+  .cat-panel {
+    background: #111; color: #fff;
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height 0.46s cubic-bezier(0.4,0,0.2,1), opacity 0.32s ease;
+  }
+  .cat-panel.open { max-height: 560px; opacity: 1; }
+  .cat-panel-wrap {
+    max-width: 1180px; margin: 0 auto; padding: 40px 48px 44px;
+  }
+  .cat-pane { display: none; }
+  .cat-pane.active { display: block; }
+  .cat-pane-head { margin-bottom: 26px; }
+  .cat-pane-head h3 {
+    font-size: 20px; font-weight: 700; line-height: 1.2;
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  .cat-pane-head .cat-sub {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255,255,255,0.42);
+  }
+  .cat-pane-head p { font-size: 13px; color: rgba(255,255,255,0.58); margin-top: 8px; line-height: 1.65; }
+  .cat-pane-items {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  }
+  .cat-item {
+    display: flex; flex-direction: column; gap: 4px; position: relative;
+    padding: 15px 34px 15px 15px;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 10px; background: rgba(255,255,255,0.04);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .cat-item:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.22); }
+  .cat-item .item-name { font-size: 13px; font-weight: 600; color: #fff; line-height: 1.3; }
+  .cat-item .item-tagline { font-size: 11px; color: rgba(255,255,255,0.48); line-height: 1.45; }
+  .cat-item .item-arr {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    font-size: 13px; color: rgba(255,255,255,0.28);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .cat-item:hover .item-arr { color: rgba(255,255,255,0.8); transform: translateY(-50%) translateX(3px); }
+  .cat-panel-foot {
+    display: flex; justify-content: flex-end;
+    margin-top: 22px; padding-top: 17px;
+    border-top: 1px solid rgba(255,255,255,0.09);
+  }
+  .cat-panel-viewall {
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.65);
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: color 0.2s;
+  }
+  .cat-panel-viewall:hover { color: #fff; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1100px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--bp-lt2); }
+    .map-legend { grid-template-columns: repeat(2, 1fr); }
+    .news-grid { grid-template-columns: repeat(2, 1fr); }
+    .cert-badges { grid-template-columns: repeat(3, 1fr); }
+    .cat-pane-items { grid-template-columns: repeat(3, 1fr); }
+    .cat-panel.open { max-height: 720px; }
+  }
+  @media (max-width: 760px) {
+    .home-section { padding: 80px 24px; }
+    .hero-inner { padding: 0 24px; }
+    .hero-tabs .wrap { padding: 0; }
+    .hero-tabs a { padding: 16px 10px; }
+    .hero-tabs .t-en { display: none; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-right: 0 !important; border-top: 1px solid var(--bp-lt2); }
+    .map-legend { grid-template-columns: 1fr; }
+    .news-grid { grid-template-columns: 1fr; }
+    .cert-badges { grid-template-columns: repeat(2, 1fr); }
+    .cat-panel-wrap { padding: 28px 24px 32px; }
+    .cat-pane-items { grid-template-columns: repeat(2, 1fr); }
+    .cat-panel.open { max-height: 1100px; }
+  }
+</style>
+<link rel="stylesheet" href="assets/css/theme-apple.css?v=260707b" />
+</head>
+<body data-base="." data-page="home" data-nav="home" id="top">
+
+<div id="bp-header-slot"></div>
+
+<!-- ============ 01 · HERO (이미지 + 탭) ============ -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="hero-slides">
+    <img src="Bioprotech Design System/assets/hero-surgery-1.jpg" class="active" alt="Surgery" />
+    <img src="Bioprotech Design System/assets/hero-surgery-2.jpeg" alt="Surgery" />
+    <img src="Bioprotech Design System/assets/hero-surgery-3.jpg" alt="Surgery" />
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1 class="hero-title ko-only">의료 현장의 안전을 기술로 실현합니다</h1>
+      <h1 class="hero-title en-only">Clinical Safety, Engineered Since 2000</h1>
+      <h1 class="hero-title es-only">Seguridad clínica, garantizada por la tecnología desde 2000</h1>
+      <p class="hero-desc ko-only">
+        FDA · CE · ISO 인증 의료용 바이오센서 전문기업, 25년간 전 세계 의료 현장과 함께합니다.
+      </p>
+      <p class="hero-desc en-only">
+        FDA · CE · ISO-certified medical biosensors, serving clinicians worldwide for 25 years.
+      </p>
+      <p class="hero-desc es-only">
+        Empresa especializada en biosensores médicos con certificación FDA · CE · ISO, junto a los profesionales sanitarios de todo el mundo desde hace 25 años.
+      </p>
+      <div class="hero-btns">
+        <a href="products/index.html" class="btn btn-primary">
+          <span class="ko-only">제품 보기</span><span class="en-only">View Products</span><span class="es-only">Ver productos</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="support/contact.html" class="btn btn-ghost">
+          <span class="ko-only">견적 문의</span><span class="en-only">Get a Quote</span><span class="es-only">Solicitar presupuesto</span>
+        </a>
+      </div>
+      <div class="hero-indicators">
+        <i class="active" data-slide="0"></i>
+        <i data-slide="1"></i>
+        <i data-slide="2"></i>
+        <span class="hero-counter"><span id="slideCurrent">01</span> / 03</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 탭 — 제품 카테고리 바로가기 -->
+  <nav class="hero-tabs" aria-label="제품 카테고리">
+    <div class="wrap">
+      <a href="products/category.html?cat=esu" data-cat="esu">
+        <span class="t-ko ko-only">전기수술</span><span class="t-ko en-only">Electrosurgery</span><span class="t-ko es-only">Electrocirugía</span><span class="t-en">ESU</span>
+      </a>
+      <a href="products/category.html?cat=cardio" data-cat="cardio">
+        <span class="t-ko ko-only">심전도</span><span class="t-ko en-only">Cardiology</span><span class="t-ko es-only">Cardiología</span><span class="t-en">ECG</span>
+      </a>
+      <a href="products/category.html?cat=neuro" data-cat="neuro">
+        <span class="t-ko ko-only">신경진단</span><span class="t-ko en-only">Neurology</span><span class="t-ko es-only">Neurología</span><span class="t-en">EEG · EMG</span>
+      </a>
+      <a href="products/category.html?cat=pain" data-cat="pain">
+        <span class="t-ko ko-only">통증관리</span><span class="t-ko en-only">Pain Management</span><span class="t-ko es-only">Tratamiento del dolor</span><span class="t-en">TENS</span>
+      </a>
+    </div>
+  </nav>
+</section>
+
+<!-- CATEGORY PANEL (카테고리 탭 클릭 → 제품 슬라이드다운) -->
+<div class="cat-panel" id="catPanel" aria-hidden="true">
+  <div class="cat-panel-wrap">
+    <div id="catPanelInner"></div>
+  </div>
+</div>
+
+<!-- ============ 02 · ABOUT (회사 설명) ============ -->
+<section class="home-section home-about" id="about" data-screen-label="02 About">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="kicker">About Bioprotech</div>
+      <h2 class="ko-only">25년, 변하지 않은 기준<span class="en">Since May 19, 2000</span></h2>
+      <h2 class="en-only">25 Years, One Standard<span class="en">Since May 19, 2000</span></h2>
+      <h2 class="es-only">25 años, un único estándar<span class="en">Since May 19, 2000</span></h2>
+      <p class="ko-only">2000년 설립 이래, 바이오프로테크는 단 하나의 기준으로 제품을 만들어 왔습니다. 의료진과 환자의 안전. 그 결과는 숫자로 남았습니다.</p>
+      <p class="en-only">Since 2000, Bioprotech has built every product around a single standard — the safety of clinicians and patients. The record speaks in numbers.</p>
+      <p class="es-only">Desde su fundación en 2000, Bioprotech fabrica cada producto en torno a un único estándar: la seguridad de los profesionales sanitarios y los pacientes. Los resultados hablan en cifras.</p>
+    </div>
+
+    <div class="about-intro ko-only">
+      <h3>의료용 바이오센서 제조 전문기업, <span class="hl">바이오프로테크</span>는 Bio sensors와 Bio products라는 두 축으로 성장해 왔습니다.</h3>
+      <p>강원도 원주 문막 동화첨단의료기기산업단지에 본사를 두고, 한국(BPH), 미국(BPU), 중국 연태(BPC), 광저우(BPG)의 4개 법인 체계로 운영합니다. ECG Electrode, TENS 전극, ESU Pencil, EEG/EMG 전극까지 수술·진단·재활의 전 영역을 아우릅니다.</p>
+    </div>
+    <div class="about-intro en-only">
+      <h3>A manufacturer of medical biosensors — <span class="hl">Bioprotech</span> has grown along two pillars: Bio sensors and Bio products.</h3>
+      <p>Headquartered at the Donghwa Advanced Medical Device Industrial Complex in Wonju, Korea, with four entities — Korea (BPH), USA (BPU), and China (BPC Yantai, BPG Guangzhou). Our portfolio spans surgery, diagnostics, and rehabilitation — ECG, TENS, ESU, EEG/EMG.</p>
+    </div>
+    <div class="about-intro es-only">
+      <h3>Empresa especializada en la fabricación de biosensores médicos, <span class="hl">Bioprotech</span> ha crecido sobre dos pilares: Bio sensors y Bio products.</h3>
+      <p>Con sede en el Complejo Industrial de Dispositivos Médicos Avanzados Donghwa, en Wonju (Corea), opera mediante cuatro filiales: Corea (BPH), EE. UU. (BPU) y China (BPC Yantai, BPG Guangzhou). Su gama abarca toda la cirugía, el diagnóstico y la rehabilitación: electrodos ECG, electrodos TENS, ESU Pencil y electrodos EEG/EMG.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">25<span class="unit">years</span></div>
+        <div class="label">Since 2000</div>
+        <div class="sub ko-only">설립 이래 한 분야, 의료기기</div>
+        <div class="sub en-only">One field since founding</div>
+        <div class="sub es-only">Un solo campo desde la fundación</div>
+      </div>
+      <div class="stat">
+        <div class="num">79<span class="unit ko-only">명</span><span class="unit en-only">people</span><span class="unit es-only">personas</span></div>
+        <div class="label">Employees</div>
+        <div class="sub ko-only">한국 본사 기준</div>
+        <div class="sub en-only">Korea HQ, as of 2026</div>
+        <div class="sub es-only">Sede de Corea, a fecha de 2026</div>
+      </div>
+      <div class="stat">
+        <div class="num">4<span class="unit ko-only">법인</span><span class="unit en-only">entities</span><span class="unit es-only">filiales</span></div>
+        <div class="label">Global Entities</div>
+        <div class="sub">KR · USA · CHN (YT / GZ)</div>
+      </div>
+      <div class="stat">
+        <div class="num">10<span class="unit">+</span></div>
+        <div class="label">Product Lines</div>
+        <div class="sub">ECG · TENS · ESU · EEG / EMG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · GLOBAL (글로벌 진출 현황 · 세계지도) ============ -->
+<section class="home-section home-global" id="global" data-screen-label="03 Global">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="kicker">Global Network</div>
+      <h2 class="ko-only">세계로 진출한 바이오프로테크<span class="en">Korea · USA · China</span></h2>
+      <h2 class="en-only">Bioprotech Across the World<span class="en">Korea · USA · China</span></h2>
+      <h2 class="es-only">Bioprotech en todo el mundo<span class="en">Korea · USA · China</span></h2>
+      <p class="ko-only">한국의 R&amp;D·본사 생산을 중심으로, 미국 판매법인과 중국 두 곳의 생산 거점이 하나의 품질 기준으로 연결됩니다.</p>
+      <p class="en-only">Anchored by R&amp;D and HQ manufacturing in Korea, connected to a US sales entity and two production hubs in China — under one quality standard.</p>
+      <p class="es-only">Con el I+D y la producción de la sede central en Corea como núcleo, la filial de ventas de EE. UU. y dos plantas de fabricación en China se conectan bajo un único estándar de calidad.</p>
+    </div>
+
+    <div class="worldmap-wrap">
+      <img class="worldmap-img" src="assets/img/world-map-inverted.png" alt="바이오프로테크 글로벌 진출 세계지도" />
+      <svg class="worldmap-ov" viewBox="0 0 1000 500" preserveAspectRatio="none" role="img" aria-label="진출 거점 표시">
+        <!-- 진출 거점 연결선 -->
+        <path class="wm-arc" d="M862 145 Q540 30 215 145"/>
+        <path class="wm-arc" d="M862 145 Q830 168 812 186"/>
+        <!-- 마커: 미국 BPU -->
+        <circle class="wm-pulse" cx="215" cy="145" r="5"/>
+        <circle class="wm-dot" cx="215" cy="145" r="4.5"/>
+        <text class="wm-label" x="215" y="131" text-anchor="middle">USA · BPU</text>
+        <!-- 마커: 한국 본사 (HQ) -->
+        <circle class="wm-pulse hq" cx="862" cy="145" r="5.5"/>
+        <circle class="wm-dot hq" cx="862" cy="145" r="5"/>
+        <text class="wm-label" x="862" y="130" text-anchor="middle">KOREA · HQ</text>
+        <!-- 마커: 중국 연태 BPC -->
+        <circle class="wm-pulse" cx="832" cy="147" r="4.5"/>
+        <circle class="wm-dot" cx="832" cy="147" r="4"/>
+        <text class="wm-label-sub" x="822" y="164" text-anchor="middle">Yantai · BPC</text>
+        <!-- 마커: 중국 광저우 BPG -->
+        <circle class="wm-pulse" cx="812" cy="186" r="4.5"/>
+        <circle class="wm-dot" cx="812" cy="186" r="4"/>
+        <text class="wm-label-sub" x="812" y="202" text-anchor="middle">Guangzhou · BPG</text>
+      </svg>
+    </div>
+
+    <div class="map-legend">
+      <div class="legend-card">
+        <div class="code">KR · BPH</div>
+        <h4 class="ko-only">㈜바이오프로테크<span class="en">HQ &amp; R&amp;D · Korea</span></h4>
+        <h4 class="en-only">Bio Protech HQ<span class="en">HQ &amp; R&amp;D · Korea</span></h4>
+        <h4 class="es-only">Bio Protech, sede central<span class="en">HQ &amp; R&amp;D · Korea</span></h4>
+        <p class="ko-only">본사 · 연구개발 · 국내 생산. 강원도 원주 문막.</p>
+        <p class="en-only">HQ · R&amp;D · domestic manufacturing. Wonju, Korea.</p>
+        <p class="es-only">Sede central · I+D · fabricación nacional. Wonju, Corea.</p>
+      </div>
+      <div class="legend-card">
+        <div class="code">USA · BPU</div>
+        <h4>Bio Protech USA<span class="en">North America · Sales</span></h4>
+        <p class="ko-only">북미 판매법인. FDA 등록 제품 미주 유통·고객 대응.</p>
+        <p class="en-only">North American sales entity. Distributes FDA-registered products.</p>
+        <p class="es-only">Filial de ventas en Norteamérica. Distribución de productos registrados ante la FDA y atención al cliente.</p>
+      </div>
+      <div class="legend-card">
+        <div class="code">CHN · BPC</div>
+        <h4>Bio Protech Yantai<span class="en">China · Manufacturing</span></h4>
+        <p class="ko-only">중국 연태 생산법인. ECG / TENS 전극 양산·아시아 공급.</p>
+        <p class="en-only">Yantai manufacturing entity. ECG / TENS electrode production.</p>
+        <p class="es-only">Planta de fabricación en Yantai (China). Producción en serie de electrodos ECG / TENS y suministro a Asia.</p>
+      </div>
+      <div class="legend-card">
+        <div class="code">CHN · BPG</div>
+        <h4>Bio Protech Guangzhou<span class="en">China · Manufacturing</span></h4>
+        <p class="ko-only">광저우 생산법인. 전기수술 제품군 생산·중화권 유통.</p>
+        <p class="en-only">Guangzhou entity. Electrosurgery production &amp; Greater China hub.</p>
+        <p class="es-only">Planta de fabricación en Guangzhou. Producción de la gama de electrocirugía y distribución en la Gran China.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · NEWS (뉴스 / 노티스) ============ -->
+<section class="home-section home-news" id="news" data-screen-label="04 News">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="kicker">News &amp; Notice</div>
+      <h2 class="ko-only">뉴스 · 공지사항<span class="en">Latest Updates</span></h2>
+      <h2 class="en-only">News &amp; Notice<span class="en">Latest Updates</span></h2>
+      <h2 class="es-only">Noticias y avisos<span class="en">Latest Updates</span></h2>
+      <p class="ko-only">바이오프로테크의 공지, 보도자료, 전시회·인증 소식을 한곳에서 확인하실 수 있습니다.</p>
+      <p class="en-only">Notices, press releases, exhibitions, and certification updates from Bioprotech in one place.</p>
+      <p class="es-only">Avisos, notas de prensa, ferias y novedades de certificación de Bioprotech, todo en un mismo lugar.</p>
+    </div>
+    <div class="news-grid" id="newsList"><!-- JS 주입 --></div>
+    <div class="news-foot">
+      <a href="news/index.html" class="btn btn-primary">
+        <span class="ko-only">전체 뉴스 보기</span><span class="en-only">View All News</span><span class="es-only">Ver todas las noticias</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · CERT (인증 현황) ============ -->
+<section class="home-section home-cert" id="cert" data-screen-label="05 Certifications">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="kicker">Regulatory Certifications</div>
+      <h2 class="ko-only">국제 인증으로 증명된 품질<span class="en">FDA · CE · ISO · KGMP</span></h2>
+      <h2 class="en-only">Certified Quality<span class="en">FDA · CE · ISO · KGMP</span></h2>
+      <h2 class="es-only">Calidad avalada por certificaciones internacionales<span class="en">FDA · CE · ISO · KGMP</span></h2>
+      <p class="ko-only">제품마다 요구되는 모든 국제 규제 인증을 자체적으로 취득하고 관리합니다.</p>
+      <p class="en-only">Every certification required for each product is obtained and maintained in-house.</p>
+      <p class="es-only">Cada certificación regulatoria internacional exigida para cada producto se obtiene y se gestiona de forma interna.</p>
+    </div>
+    <div class="cert-badges">
+      <div class="cert-badge"><div class="code">ISO 13485</div><div class="label">Medical Device QMS</div></div>
+      <div class="cert-badge"><div class="code">ISO 14001</div><div class="label">Environmental Management</div></div>
+      <div class="cert-badge"><div class="code">CE MDR</div><div class="label">European Conformity</div></div>
+      <div class="cert-badge"><div class="code">FDA 510(k)</div><div class="label">US Food &amp; Drug</div></div>
+      <div class="cert-badge"><div class="code">KGMP</div><div class="label">Korea GMP</div></div>
+      <div class="cert-badge"><div class="code">MFDS</div><div class="label ko-only">식약처 허가</div><div class="label en-only">MFDS Approval</div><div class="label es-only">Autorización de la MFDS</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (회사 주소 — chrome.js 주입) -->
+<div id="bp-footer-slot"></div>
+
+<script src="assets/js/chrome.js?v=260707b"></script>
+<script>
+/* 제품 카테고리 인라인 데이터 (fetch 없이 작동) */
+window.BP_CAT_DATA = {
+  categories: [
+    { id:'esu',    name:{ko:'전기수술',   en:'Electrosurgery',   es:'Electrocirugía'},   sub:{ko:'Electrosurgery · ESU',    en:'ESU',       es:'ESU'},     desc:{ko:'수술실 연기 제거부터 정밀 전기수술 기기까지, 수술 현장의 안전을 책임지는 전문 라인업.',                              en:'From smoke evacuation to precision electrosurgery, a complete line-up for the operating room.',                      es:'Desde la evacuación de humo hasta la electrocirugía de precisión, una gama completa para el quirófano.'} },
+    { id:'cardio', name:{ko:'심전도',     en:'Cardiology',        es:'Cardiología'},      sub:{ko:'Cardiology · ECG',        en:'ECG',       es:'ECG'},     desc:{ko:'ECG, TAB, Neonatal, SpO₂까지 — 심전도 측정을 위한 1회용 바이오센서 전 라인.',                                      en:'A full range of disposable biosensors for electrocardiographic monitoring.',                                          es:'Una gama completa de biosensores desechables para la monitorización electrocardiográfica.'} },
+    { id:'neuro',  name:{ko:'신경진단',   en:'Neurology',         es:'Neurología'},       sub:{ko:'Neurology · EEG / EMG',   en:'EEG / EMG', es:'EEG / EMG'},desc:{ko:'EMG 바늘, EEG 컵, 표면 전극, IONM — 신경 진단에 필요한 정밀 전극과 케이블.',                                    en:'Precision electrodes and cables for neurological diagnostics.',                                                      es:'Electrodos y cables de precisión para el diagnóstico neurológico.'} },
+    { id:'pain',   name:{ko:'통증관리',   en:'Pain Management',   es:'Tratamiento del dolor'}, sub:{ko:'Pain Management · TENS', en:'TENS',   es:'TENS'},   desc:{ko:'PROTENS Electrode와 TENS / EMS / IF Unit — 만성·재활 통증 관리 전기자극 솔루션.',                              en:'Electrical stimulation solutions for chronic and rehabilitation pain management.',                                    es:'Soluciones de electroestimulación para el tratamiento del dolor crónico y de rehabilitación.'} }
+  ],
+  products: [
+    {id:'smoke-evacuator',        cat:'esu',    name:{ko:'Smoke Evacuator',             en:'Smoke Evacuator',             es:'Smoke Evacuator'},             tagline:{ko:'수술실 연기 배출기',              en:'Surgical smoke evacuation unit',            es:'Unidad de evacuación de humo quirúrgico'}},
+    {id:'telescopic-smoke-pencil',cat:'esu',    name:{ko:'Telescopic Smoke Pencil',     en:'Telescopic Smoke Pencil',     es:'Telescopic Smoke Pencil'},     tagline:{ko:'길이 조절식 연기 흡입 펜슬',        en:'Telescopic smoke evacuation pencil',         es:'Lápiz telescópico de evacuación de humo'}},
+    {id:'economy-smoke-pencil',   cat:'esu',    name:{ko:'Economy Smoke Pencil',        en:'Economy Smoke Pencil',        es:'Economy Smoke Pencil'},        tagline:{ko:'경제형 연기 흡입 펜슬',              en:'Economy-grade smoke pencil',                 es:'Lápiz de evacuación de humo de gama económica'}},
+    {id:'dual-extension-pencil',  cat:'esu',    name:{ko:'Dual Extension Smoke Pencil', en:'Dual Extension Smoke Pencil', es:'Dual Extension Smoke Pencil'}, tagline:{ko:'듀얼 익스텐션 스모크 펜슬',         en:'Dual-extension smoke pencil',                es:'Lápiz de evacuación de humo de doble extensión'}},
+    {id:'surgical-pencil',        cat:'esu',    name:{ko:'Surgical Pencil',             en:'Surgical Pencil',             es:'Surgical Pencil'},             tagline:{ko:'전기수술용 펜슬 (Ergonomic / Standard)', en:'Electrosurgical pencil',               es:'Lápiz electroquirúrgico'}},
+    {id:'smoke-adapter',          cat:'esu',    name:{ko:'Smoke Adapter',               en:'Smoke Adapter',               es:'Smoke Adapter'},               tagline:{ko:'수술용 연기 어댑터',               en:'Surgical smoke adapter',                     es:'Adaptador de humo quirúrgico'}},
+    {id:'laparoscopic',           cat:'esu',    name:{ko:'Laparoscopic',                en:'Laparoscopic',                es:'Laparoscopic'},                tagline:{ko:'복강경 수술용 기구',               en:'Laparoscopic surgical device',               es:'Dispositivo quirúrgico laparoscópico'}},
+    {id:'esu-plate',              cat:'esu',    name:{ko:'ESU Plate',                   en:'ESU Plate',                   es:'ESU Plate'},                   tagline:{ko:'접지판 (일회용)',                   en:'Disposable grounding pad',                   es:'Placa de toma de tierra desechable'}},
+    {id:'ecg-electrode',          cat:'cardio', name:{ko:'ECG Electrode',               en:'ECG Electrode',               es:'ECG Electrode'},               tagline:{ko:'심전도 측정용 1회용 전극',           en:'Disposable ECG electrode',                   es:'Electrodo de ECG desechable'}},
+    {id:'tab-electrode',          cat:'cardio', name:{ko:'TAB Electrode',               en:'TAB Electrode',               es:'TAB Electrode'},               tagline:{ko:'탭형 심전도 전극',                  en:'Tab-style ECG electrode',                    es:'Electrodo de ECG tipo pestaña'}},
+    {id:'neonatal-electrode',     cat:'cardio', name:{ko:'Neonatal Electrode',          en:'Neonatal Electrode',          es:'Neonatal Electrode'},          tagline:{ko:'신생아용 심전도 전극',              en:'Neonatal ECG electrode',                     es:'Electrodo de ECG neonatal'}},
+    {id:'spo2-sensor',            cat:'cardio', name:{ko:'SpO₂ Sensor',                en:'SpO₂ Sensor',                 es:'SpO₂ Sensor'},                 tagline:{ko:'산소포화도 센서',                   en:'Oxygen saturation sensor',                   es:'Sensor de saturación de oxígeno'}},
+    {id:'emg-needle',             cat:'neuro',  name:{ko:'EMG Needle & Electrode',     en:'EMG Needle & Electrode',      es:'EMG Needle & Electrode'},      tagline:{ko:'근전도 검사용 바늘·전극',            en:'Needle and electrode for EMG',               es:'Aguja y electrodo para EMG'}},
+    {id:'eeg-cup',                cat:'neuro',  name:{ko:'EEG Cup Electrode',          en:'EEG Cup Electrode',           es:'EEG Cup Electrode'},           tagline:{ko:'뇌파 컵 전극',                      en:'Cup-type EEG electrode',                     es:'Electrodo de copa para EEG'}},
+    {id:'surface-electrode',      cat:'neuro',  name:{ko:'Surface Electrode',          en:'Surface Electrode',           es:'Surface Electrode'},           tagline:{ko:'표면 전극',                         en:'Surface electrode',                          es:'Electrodo de superficie'}},
+    {id:'ionm-needle',            cat:'neuro',  name:{ko:'IONM Needle',                en:'IONM Needle',                 es:'IONM Needle'},                 tagline:{ko:'수술 중 신경감시(IONM) 바늘',       en:'Intraoperative neuromonitoring needle',       es:'Aguja de neuromonitorización intraoperatoria'}},
+    {id:'neuro-cable',            cat:'neuro',  name:{ko:'Neurology Cable',            en:'Neurology Cable',             es:'Neurology Cable'},             tagline:{ko:'신경과 진단 케이블',                en:'Neurological diagnostic cable',              es:'Cable de diagnóstico neurológico'}},
+    {id:'tens-electrode',         cat:'pain',   name:{ko:'TENS Electrode',             en:'TENS Electrode',              es:'TENS Electrode'},              tagline:{ko:'PROTENS 경피전기자극 전극',          en:'PROTENS transcutaneous stimulation electrode',es:'Electrodo de estimulación transcutánea PROTENS'}},
+    {id:'tens-unit',              cat:'pain',   name:{ko:'TENS Unit',                  en:'TENS Unit',                   es:'TENS Unit'},                   tagline:{ko:'TENS 자극기 본체',                  en:'TENS stimulator unit',                       es:'Unidad estimuladora TENS'}},
+    {id:'ems-unit',               cat:'pain',   name:{ko:'EMS Unit',                   en:'EMS Unit',                   es:'EMS Unit'},                    tagline:{ko:'EMS 전기근육자극기',               en:'Electrical muscle stimulator',               es:'Estimulador muscular eléctrico'}},
+    {id:'if-unit',                cat:'pain',   name:{ko:'IF Unit',                    en:'IF Unit',                    es:'IF Unit'},                     tagline:{ko:'간섭파 치료기',                     en:'Interferential current unit',                es:'Unidad de corriente interferencial'}}
+  ]
+};
+</script>
+<script>
+  /* ----- 히어로 슬라이드쇼 (배경 이미지 순차 전환) ----- */
+  const slides = document.querySelectorAll('.hero-slides img');
+  const indicators = document.querySelectorAll('.hero-indicators i');
+  const counter = document.getElementById('slideCurrent');
+  let idx = 0;
+  const show = (n) => {
+    slides.forEach((s, i) => s.classList.toggle('active', i === n));
+    indicators.forEach((d, i) => d.classList.toggle('active', i === n));
+    if (counter) counter.textContent = String(n + 1).padStart(2, '0');
+    idx = n;
+  };
+  indicators.forEach((d, i) => d.addEventListener('click', () => show(i)));
+  setInterval(() => show((idx + 1) % slides.length), 5000);
+
+  /* ----- 뉴스/노티스 로드 ----- */
+  (function loadNews() {
+    const lang = (window.bpLang ? bpLang() : 'ko');
+    const wrap = document.getElementById('newsList');
+    fetch('assets/data/news.json')
+      .then(r => r.json())
+      .then(d => {
+        const items = (d.items || []).slice(0, 4);
+        wrap.innerHTML = items.map(it => `
+          <a class="news-card" href="news/detail.html?id=${it.id}">
+            <div class="news-meta">
+              <span class="news-tag">${it.tag[lang]}</span>
+              <span class="news-date">${it.date}</span>
+            </div>
+            <h4>${it.title[lang]}</h4>
+            <p>${it.summary[lang]}</p>
+            <span class="news-more">${({ko:'자세히 보기', en:'Read more', es:'Leer más'})[lang] || '자세히 보기'} →</span>
+          </a>`).join('');
+      })
+      .catch(() => {
+        wrap.innerHTML = '<p style="color:var(--ap-text-secondary)">' +
+          (({ko:'뉴스를 불러오지 못했습니다.', en:'Unable to load news.', es:'No se pudieron cargar las noticias.'})[lang] || '뉴스를 불러오지 못했습니다.') + '</p>';
+      });
+  })();
+
+  /* ----- 카테고리 탭 → 제품 패널 슬라이드다운 ----- */
+  (function initCatPanel() {
+    const tabs  = document.querySelectorAll('.hero-tabs a[data-cat]');
+    const panel = document.getElementById('catPanel');
+    const inner = document.getElementById('catPanelInner');
+    if (!panel || !inner || !tabs.length) return;
+
+    let currentCat = null;
+    const L  = function() { return (typeof bpLang === 'function' ? bpLang() : 'ko'); };
+    const VA = { ko: '전체 보기', en: 'View All', es: 'Ver todos' };
+
+    /* 인라인 데이터 사용 (file:// 및 http:// 모두 동작) */
+    var catalogReady = Promise.resolve(window.BP_CAT_DATA || null);
+
+    function render(catId, catalog) {
+      if (!catalog) return;
+      var l    = L();
+      var cat  = null;
+      for (var i = 0; i < catalog.categories.length; i++) {
+        if (catalog.categories[i].id === catId) { cat = catalog.categories[i]; break; }
+      }
+      if (!cat) return;
+      var items = catalog.products.filter(function(p) { return p.cat === catId; });
+
+      inner.innerHTML =
+        '<div class="cat-pane active">' +
+          '<div class="cat-pane-head">' +
+            '<h3>' + cat.name[l] + '<span class="cat-sub">' + cat.sub[l] + '</span></h3>' +
+            '<p>' + cat.desc[l] + '</p>' +
+          '</div>' +
+          '<div class="cat-pane-items">' +
+            items.map(function(p) {
+              return '<a class="cat-item" href="products/detail.html?id=' + p.id + '">' +
+                '<span class="item-name">' + p.name[l] + '</span>' +
+                '<span class="item-tagline">' + p.tagline[l] + '</span>' +
+                '<span class="item-arr">→</span>' +
+              '</a>';
+            }).join('') +
+          '</div>' +
+          '<div class="cat-panel-foot">' +
+            '<a class="cat-panel-viewall" href="products/category.html?cat=' + catId + '">' +
+              (VA[l] || 'View All') + ' →' +
+            '</a>' +
+          '</div>' +
+        '</div>';
+
+      panel.classList.add('open');
+      panel.setAttribute('aria-hidden', 'false');
+      setTimeout(function() {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 40);
+    }
+
+    function closePanel() {
+      panel.classList.remove('open');
+      panel.setAttribute('aria-hidden', 'true');
+      tabs.forEach(function(t) { t.classList.remove('cat-active'); });
+      currentCat = null;
+    }
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        var catId = tab.dataset.cat;
+        if (currentCat === catId) { closePanel(); return; }
+        tabs.forEach(function(t) {
+          t.classList.toggle('cat-active', t.dataset.cat === catId);
+        });
+        currentCat = catId;
+        catalogReady.then(function(catalog) { render(catId, catalog); });
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (currentCat && !panel.contains(e.target) && !e.target.closest('.hero-tabs')) {
+        closePanel();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

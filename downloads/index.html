@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>자료실 | 바이오프로테크</title>
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .dl-tabs { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+  .tab-btn { padding: 10px 20px; font-size: 13px; font-weight: 700; background: #fff; border: 1px solid var(--bp-lt2); color: var(--bp-dk2); cursor: pointer; }
+  .tab-btn.active { background: var(--bp-accent5); color: #fff; border-color: var(--bp-accent5); }
+  .dl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--bp-lt2); border: 1px solid var(--bp-lt2); }
+  .dl-card { background: #fff; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 200px; }
+  .dl-card .type { font-size: 10px; letter-spacing: 0.22em; font-weight: 700; color: var(--bp-accent5); }
+  .dl-card h4 { font-size: 15px; font-weight: 700; color: var(--bp-dk2); line-height: 1.4; }
+  .dl-card .meta { font-size: 12px; color: var(--bp-dk2); opacity: 0.7; }
+  .dl-card .dl-btn { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--bp-accent5); letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 0; border-top: 1px solid var(--bp-lt2); }
+  .dl-card.empty { background: repeating-linear-gradient(45deg, #F7F8FA, #F7F8FA 8px, #F1F3F7 8px, #F1F3F7 16px); color: var(--bp-dk2); opacity: 0.7; align-items: center; justify-content: center; text-align: center; }
+  @media (max-width: 900px) { .dl-grid { grid-template-columns: 1fr; } }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="downloads">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Resources</span></nav>
+  <h1 class="ko-only">자료실<span class="en">Resources &amp; Downloads</span></h1>
+  <h1 class="en-only">Resources &amp; Downloads<span class="en">Catalogs · SDS · Certificates</span></h1>
+  <h1 class="es-only">Descargas<span class="en">Catálogos · SDS · Certificados</span></h1>
+  <p class="lead ko-only">제품 카탈로그, SDS, 인증서, 마케팅 자료. 일부 자료는 이메일 승인 후 다운로드 링크가 발송됩니다.</p>
+  <p class="lead en-only">Product catalogs, SDS, certificates, and marketing materials. Some items require email approval before the download link is issued.</p>
+  <p class="lead es-only">Catálogos de productos, SDS, certificados y material de marketing. Algunos elementos requieren aprobación por correo electrónico antes de emitir el enlace de descarga.</p>
+</section>
+
+<main class="page-body">
+  <div class="dl-tabs ko-only">
+    <button class="tab-btn active" data-t="*">전체</button>
+    <button class="tab-btn" data-t="catalog">제품 카탈로그</button>
+    <button class="tab-btn" data-t="sds">SDS</button>
+    <button class="tab-btn" data-t="cert">인증서</button>
+    <button class="tab-btn" data-t="marketing">마케팅 자료</button>
+  </div>
+  <div class="dl-tabs en-only">
+    <button class="tab-btn active" data-t="*">All</button>
+    <button class="tab-btn" data-t="catalog">Product Catalog</button>
+    <button class="tab-btn" data-t="sds">SDS</button>
+    <button class="tab-btn" data-t="cert">Certificates</button>
+    <button class="tab-btn" data-t="marketing">Marketing</button>
+  </div>
+  <div class="dl-tabs es-only">
+    <button class="tab-btn active" data-t="*">Todos</button>
+    <button class="tab-btn" data-t="catalog">Catálogo de productos</button>
+    <button class="tab-btn" data-t="sds">SDS</button>
+    <button class="tab-btn" data-t="cert">Certificados</button>
+    <button class="tab-btn" data-t="marketing">Material de marketing</button>
+  </div>
+
+  <div class="dl-grid" id="grid">
+    <div class="dl-card empty"><span class="ko-only">PDF 파일<br/>(준비 중)</span><span class="en-only">PDF file<br/>(Pending)</span><span class="es-only">Archivo PDF<br/>(Próximamente)</span></div>
+    <div class="dl-card empty"><span class="ko-only">PDF 파일<br/>(준비 중)</span><span class="en-only">PDF file<br/>(Pending)</span><span class="es-only">Archivo PDF<br/>(Próximamente)</span></div>
+    <div class="dl-card empty"><span class="ko-only">PDF 파일<br/>(준비 중)</span><span class="en-only">PDF file<br/>(Pending)</span><span class="es-only">Archivo PDF<br/>(Próximamente)</span></div>
+    <div class="dl-card empty"><span class="ko-only">PDF 파일<br/>(준비 중)</span><span class="en-only">PDF file<br/>(Pending)</span><span class="es-only">Archivo PDF<br/>(Próximamente)</span></div>
+    <div class="dl-card empty"><span class="ko-only">PDF 파일<br/>(준비 중)</span><span class="en-only">PDF file<br/>(Pending)</span><span class="es-only">Archivo PDF<br/>(Próximamente)</span></div>
+    <div class="dl-card empty"><span class="ko-only">PDF 파일<br/>(준비 중)</span><span class="en-only">PDF file<br/>(Pending)</span><span class="es-only">Archivo PDF<br/>(Próximamente)</span></div>
+  </div>
+
+  <p class="placeholder-empty ko-only" style="margin-top:32px"><strong>다운로드 파일 업로드 예정</strong>제품 카탈로그(Full / 제품군별), 안전보건자료(SDS), 국제 인증서 사본, 브로셔·배너 등 마케팅 자료를 이 섹션에서 통합 제공할 예정입니다.</p>
+  <p class="placeholder-empty en-only" style="margin-top:32px"><strong>Files to be uploaded</strong>This section will consolidate product catalogs (full and by line), safety data sheets, international certificate copies, and marketing materials such as brochures and banners.</p>
+  <p class="placeholder-empty es-only" style="margin-top:32px"><strong>Archivos por cargar</strong>Esta sección reunirá catálogos de productos (completos y por línea), hojas de datos de seguridad (SDS), copias de certificados internacionales y material de marketing como folletos y banners.</p>
+
+  <div style="margin-top:48px" class="ko-only">
+    <h3 style="font-size:18px; font-weight:700; color:var(--bp-accent5); margin-bottom:16px">개별 자료 요청</h3>
+    <p style="font-size:14px; line-height:1.75; color:var(--bp-dk2); opacity:0.85; margin-bottom:16px">일반 공개 자료 외에 SDS·시험성적서 등 개별 자료는 <a href="../support/contact.html" style="color:var(--bp-accent5); text-decoration:underline;">Contact 페이지</a>를 통해 요청하실 수 있습니다.</p>
+  </div>
+  <div style="margin-top:48px" class="en-only">
+    <h3 style="font-size:18px; font-weight:700; color:var(--bp-accent5); margin-bottom:16px">Individual Document Requests</h3>
+    <p style="font-size:14px; line-height:1.75; color:var(--bp-dk2); opacity:0.85; margin-bottom:16px">For items outside the public library such as SDS and test reports, please submit a request via the <a href="../support/contact.html" style="color:var(--bp-accent5); text-decoration:underline;">Contact page</a>.</p>
+  </div>
+  <div style="margin-top:48px" class="es-only">
+    <h3 style="font-size:18px; font-weight:700; color:var(--bp-accent5); margin-bottom:16px">Solicitudes de documentos individuales</h3>
+    <p style="font-size:14px; line-height:1.75; color:var(--bp-dk2); opacity:0.85; margin-bottom:16px">Para elementos fuera de la biblioteca pública, como SDS e informes de ensayo, envíe una solicitud a través de la <a href="../support/contact.html" style="color:var(--bp-accent5); text-decoration:underline;">página de Contacto</a>.</p>
+  </div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/chrome.js"></script>
+<script>
+  // Tabs UI (stubbed — real filter kicks in once items exist)
+  document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+  }));
+</script>
+</body>
+</html>
