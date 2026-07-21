@@ -230,6 +230,24 @@
   }
   const cat = data.categories.find(c => c.id === prod.cat);
 
+  // Product 구조화 데이터(JSON-LD) 동적 주입
+  (function () {
+    const ld = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: prod.name[lang],
+      category: cat.name[lang],
+      description: (prod.tagline && prod.tagline[lang]) || '',
+      brand: { '@type': 'Brand', name: 'Bioprotech' },
+      manufacturer: { '@type': 'Organization', name: 'Bioprotech Co., Ltd.' },
+      url: location.href
+    };
+    const sc = document.createElement('script');
+    sc.type = 'application/ld+json';
+    sc.textContent = JSON.stringify(ld);
+    document.head.appendChild(sc);
+  })();
+
   document.title = `${prod.name[lang]} | 바이오프로테크`;
   document.getElementById('crumb-cat').textContent = cat.name[lang];
   document.getElementById('crumb-cat').href = `category.html?cat=${cat.id}`;
