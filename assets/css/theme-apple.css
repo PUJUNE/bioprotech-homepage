@@ -264,14 +264,9 @@ footer {
   .bp-header.scrolled .nav-mega-btn,
   .bp-header.solid .nav-mega-btn { color: var(--bp-dk2); }
 
-  /* 모바일 메가메뉴 — 다크 패널 대신 흰 패널·어두운 글자로 가독성 확보 */
-  .nav-mega { background: #fff; border-top: 0; }
-  .mega-col { border-bottom-color: var(--bp-lt2); }
-  .mega-cat { border-bottom-color: var(--bp-lt2); }
-  .mega-cat-ko { color: var(--bp-dk2); font-size: 14px; }
-  .mega-cat-code { color: rgba(0,0,0,0.40); }
-  .mega-item { font-size: 12px; color: rgba(0,0,0,0.65); border-bottom-color: rgba(0,0,0,0.05); }
-  .mega-item:hover { color: var(--bp-dk2); }
+  /* site.css의 .bp-nav a(어두운 글자) 규칙보다 우선하도록 지정 — 다크 패널 위 항목 가독성 */
+  .bp-nav .mega-item { font-size: 12px; color: rgba(255,255,255,0.65); border-bottom-color: rgba(255,255,255,0.05); }
+  .bp-nav .mega-item:hover { color: #fff; }
 }
 
 /* ============ PLACEHOLDERS ============ */
