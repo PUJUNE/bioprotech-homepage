@@ -379,3 +379,29 @@ footer {
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .form-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Cookie consent banner (OPS-01·OPS-08) ===== */
+.bp-cookie-banner {
+  position: fixed;
+  left: 16px; right: 16px; bottom: 16px;
+  z-index: 3000;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  max-width: 860px; margin: 0 auto;
+  padding: 14px 20px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+.bp-cookie-banner p { font-size: 13px; line-height: 1.55; color: var(--bp-dk2, #1d1d1f); margin: 0; }
+.bp-cookie-banner a { text-decoration: underline; }
+.bp-cookie-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.bp-cookie-actions button {
+  font-size: 13px; padding: 8px 18px; border-radius: 980px; cursor: pointer;
+}
+.bp-cookie-accept { background: var(--bp-accent5, #0071e3); color: #fff; border: 0; }
+.bp-cookie-accept:hover { background: var(--bp-dk2, #1d1d1f); }
+.bp-cookie-decline { background: none; border: 1px solid rgba(0, 0, 0, 0.25); color: var(--bp-dk2, #1d1d1f); }
+@media (max-width: 700px) {
+  .bp-cookie-banner { flex-direction: column; align-items: flex-start; }
+}

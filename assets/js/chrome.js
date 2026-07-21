@@ -289,6 +289,57 @@
         }
       });
     });
+
+    consentBanner();
+  }
+
+  // --------- Cookie consent + GA4 (동의 후에만 로드) — OPS-01·OPS-08 ----------
+  const GA_ID = 'G-0W0ZD2J7G3';
+  const CONSENT_KEY = 'bp-cookie-consent';
+
+  function loadGA() {
+    if (window.__bpGaLoaded) return;
+    window.__bpGaLoaded = true;
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  function consentBanner() {
+    const saved = localStorage.getItem(CONSENT_KEY);
+    if (saved === 'granted') { loadGA(); return; }
+    if (saved === 'denied') return;
+    const TXT = {
+      ko: { msg: '이 사이트는 서비스 개선을 위한 방문 통계 쿠키(Google Analytics)를 사용합니다. 동의한 경우에만 수집을 시작합니다.', ok: '동의', no: '거부', more: '개인정보처리방침' },
+      en: { msg: 'This site uses analytics cookies (Google Analytics) to improve our service. Collection starts only with your consent.', ok: 'Accept', no: 'Decline', more: 'Privacy Policy' },
+      es: { msg: 'Este sitio utiliza cookies de análisis (Google Analytics) para mejorar el servicio. La recopilación comienza solo con su consentimiento.', ok: 'Aceptar', no: 'Rechazar', more: 'Política de privacidad' },
+    };
+    const L = TXT[currentLang] || TXT.ko;
+    const el = document.createElement('div');
+    el.className = 'bp-cookie-banner';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', 'Cookie consent');
+    el.innerHTML = `
+      <p>${L.msg} <a href="${BASE}/legal/privacy.html">${L.more}</a></p>
+      <div class="bp-cookie-actions">
+        <button type="button" class="bp-cookie-accept">${L.ok}</button>
+        <button type="button" class="bp-cookie-decline">${L.no}</button>
+      </div>`;
+    document.body.appendChild(el);
+    el.querySelector('.bp-cookie-accept').addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'granted');
+      el.remove();
+      loadGA();
+    });
+    el.querySelector('.bp-cookie-decline').addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'denied');
+      el.remove();
+    });
   }
 
   // --------- Helper: query params ----------
