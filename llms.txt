@@ -1,0 +1,27 @@
+# Bioprotech Co., Ltd. (㈜바이오프로테크)
+
+> Korean manufacturer of single-use biosensors and medical devices, founded in 2000 and headquartered in Wonju, South Korea, with subsidiaries in the United States (Cerritos, CA) and China (Yantai, Guangzhou). Four product lines: electrosurgery (ESU), cardiology electrodes (ECG), neurodiagnostics (EEG·EMG), and pain management (TENS). Certifications include ISO 13485, CE, and FDA. The site serves Korean, English, and Spanish.
+
+## Products
+- Electrosurgery (ESU): Smoke Evacuator, Telescopic Smoke Pencil, Economy Smoke Pencil, Dual Extension Smoke Pencil, Surgical Pencil, Smoke Adapter, Laparoscopic, ESU Plate — https://pujune.github.io/bioprotech-homepage/products/category.html?cat=esu
+- Cardiology (ECG): ECG Electrode, TAB Electrode, Neonatal Electrode, SpO2 Sensor — https://pujune.github.io/bioprotech-homepage/products/category.html?cat=cardio
+- Neurology (EEG·EMG): EMG Needle & Electrode, EEG Cup Electrode, Surface Electrode, IONM Needle, Neurology Cable — https://pujune.github.io/bioprotech-homepage/products/category.html?cat=neuro
+- Pain Management (TENS): TENS Electrode, TENS Unit, EMS Unit, IF Unit — https://pujune.github.io/bioprotech-homepage/products/category.html?cat=pain
+- Full catalog: https://pujune.github.io/bioprotech-homepage/products/index.html
+
+## Company
+- About: https://pujune.github.io/bioprotech-homepage/company/about.html
+- Quality & certifications (ISO 13485, CE, FDA): https://pujune.github.io/bioprotech-homepage/company/quality.html
+- Global network (Korea HQ, US, China): https://pujune.github.io/bioprotech-homepage/company/global.html
+- History since 2000: https://pujune.github.io/bioprotech-homepage/company/history.html
+- R&D: https://pujune.github.io/bioprotech-homepage/company/rnd.html
+
+## Support
+- FAQ (product, ordering, quality, OEM): https://pujune.github.io/bioprotech-homepage/support/faq.html
+- Contact (quote, sample, partnership, technical): https://pujune.github.io/bioprotech-homepage/support/contact.html
+- Resources (catalogs, IFU, certificates): https://pujune.github.io/bioprotech-homepage/downloads/index.html
+
+## Contact
+- Tel +82-33-735-7720 · Fax +82-33-735-7736
+- info@protechsite.com
+- 151-3 Donghwagongdan-ro, Munmak-eup, Wonju-si, Gangwon-do, Republic of Korea (26365)
