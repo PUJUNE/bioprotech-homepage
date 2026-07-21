@@ -213,7 +213,8 @@ body[data-lang="es"] .ko-only, body[data-lang="es"] .en-only { display: none !im
 }
 .placeholder-img::before {
   content: attr(data-label) "\A(제품 사진 준비 중)";
-  white-space: pre;
+  /* pre는 좁은 그리드 셀에서 줄바꿈을 막아 모바일 레이아웃 폭을 강제 확장함 — pre-line으로 \A 줄바꿈은 유지하되 랩 허용 */
+  white-space: pre-line;
   opacity: 0.6;
   line-height: 1.8;
 }
