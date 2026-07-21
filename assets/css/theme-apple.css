@@ -42,7 +42,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 .bp-nav a { font-weight: 500; letter-spacing: 0; }
-.bp-nav a::after { height: 1px; background: currentColor; }
+.bp-nav a::after { height: 1px; background: #C8102E; }
 .bp-header .brand .mark { border-radius: 9px; }
 .bp-header-cta .pill { border-radius: var(--ap-radius-pill); }
 
@@ -135,7 +135,8 @@ footer {
 .form-msg.ok, .form-msg.err { border-left-width: 3px; }
 
 /* ============ MEGA MENU ============ */
-.nav-has-mega { position: relative; }
+/* static — 패널(.nav-mega)의 absolute 기준을 버튼이 아닌 .bp-header(fixed) 전폭으로 잡는다 */
+.nav-has-mega { position: static; }
 
 /* 트리거 버튼 — .bp-nav a 와 동일한 스타일 */
 .nav-mega-btn {
@@ -146,7 +147,7 @@ footer {
 }
 .nav-mega-btn::after {
   content: ''; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 2px; background: var(--bp-accent1);
+  height: 2px; background: #C8102E;
   transform: scaleX(0); transition: transform .2s ease;
 }
 .nav-mega-btn.active::after,
@@ -164,7 +165,7 @@ footer {
 /* 메가메뉴 패널 — 뷰포트 전폭, 완전 불투명 짙은 배경 */
 .nav-mega {
   position: absolute; top: 100%; left: 0; right: 0;
-  background: rgba(0,0,0,0.90);
+  background: #000;
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.8);
   border-top: 1px solid rgba(255,255,255,0.08);
