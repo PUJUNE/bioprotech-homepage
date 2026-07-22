@@ -36,10 +36,11 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 
 /* ============ HEADER — translucent blur ============ */
 .bp-header.scrolled, .bp-header.solid {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .bp-nav a { font-weight: 500; letter-spacing: 0; }
 .bp-nav a::after { height: 1px; background: #C8102E; }
@@ -156,7 +157,7 @@ footer {
 
 .bp-header:not(.scrolled):not(.solid) .nav-mega-btn { color: #fff; }
 .bp-header.scrolled .nav-mega-btn,
-.bp-header.solid   .nav-mega-btn { color: var(--bp-dk2); }
+.bp-header.solid   .nav-mega-btn { color: #fff; }
 .bp-header.scrolled .nav-mega-btn:hover,
 .bp-header.solid   .nav-mega-btn:hover,
 .bp-header.scrolled .nav-has-mega.open .nav-mega-btn,

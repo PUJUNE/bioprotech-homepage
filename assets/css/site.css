@@ -32,9 +32,9 @@ body[data-lang="es"] .ko-only, body[data-lang="es"] .en-only { display: none !im
 }
 .bp-header.scrolled,
 .bp-header.solid {
-  background: #fff;
-  color: var(--bp-dk2);
-  box-shadow: 0 1px 0 var(--bp-lt2);
+  background: #000;
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .bp-header .brand {
   display: flex; align-items: center; gap: 14px;
