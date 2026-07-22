@@ -245,6 +245,10 @@ footer {
 
 /* 모바일 (900px 이하) */
 @media (max-width: 900px) {
+  /* 모바일 헤더 바 — 완전 불투명(뒤 비침 방지). 메뉴 열림 시엔 상태와 무관하게 불투명 */
+  .bp-header.scrolled, .bp-header.solid { background: #000; }
+  .bp-header:has(#bp-nav.open) { background: #000; }
+
   .nav-mega {
     position: static;
     opacity: 1; transform: none; pointer-events: auto;
