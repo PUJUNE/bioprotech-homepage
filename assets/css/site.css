@@ -361,7 +361,7 @@ footer {
   .bp-header { padding: 14px 20px; }
   .bp-nav {
     position: fixed; inset: 64px 0 0 0;
-    background: #fff; color: var(--bp-dk2);
+    background: #000; color: #fff;
     flex-direction: column; align-items: stretch;
     padding: 40px 20px;
     gap: 0;
@@ -369,7 +369,7 @@ footer {
     transition: transform .3s ease;
   }
   .bp-nav.open { transform: translateX(0); }
-  .bp-nav a { padding: 16px 0; border-bottom: 1px solid var(--bp-lt2); color: var(--bp-dk2); }
+  .bp-nav a { padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12); color: #fff; }
   .bp-burger { display: flex; }
   .bp-header-cta .pill { display: none; }
   .page-hero { padding: 130px 28px 60px; }
