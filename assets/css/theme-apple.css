@@ -250,6 +250,16 @@ footer {
   .bp-header.nav-open,
   .bp-header:has(#bp-nav.open) { background: #000; }
 
+  /* 헤더에 backdrop-filter가 있으면 자식 .bp-nav(position:fixed)의 기준이
+     뷰포트가 아닌 헤더 박스로 갇혀 드로어 배경이 첫 항목만 덮는 문제 발생.
+     모바일 헤더는 이미 불투명이라 blur 불필요 → 제거해 드로어가 화면 전체를 덮게 함 */
+  .bp-header,
+  .bp-header.scrolled,
+  .bp-header.solid {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
   .nav-mega {
     position: static;
     opacity: 1; transform: none; pointer-events: auto;
