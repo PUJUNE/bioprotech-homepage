@@ -250,6 +250,8 @@
       burger.addEventListener('click', () => {
         burger.classList.toggle('open');
         nav.classList.toggle('open');
+        // 헤더에도 열림 상태 표시 — 모바일에서 헤더 바 뒤 비침 방지(:has 미지원 대비)
+        if (header) header.classList.toggle('nav-open', nav.classList.contains('open'));
       });
     }
 
